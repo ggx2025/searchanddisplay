@@ -1,14 +1,17 @@
-// Navigation functionality
+// Navigation functionality with enhanced interactivity
 document.addEventListener('DOMContentLoaded', function() {
     const navbar = document.getElementById('navbar');
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
 
-    // Mobile navigation toggle
+    // Mobile navigation toggle with animation
     navToggle.addEventListener('click', function() {
         navMenu.classList.toggle('active');
         navToggle.classList.toggle('active');
+        
+        // Add body scroll lock when menu is open
+        document.body.classList.toggle('menu-open');
     });
 
     // Close mobile menu when clicking on a link
@@ -16,19 +19,32 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function() {
             navMenu.classList.remove('active');
             navToggle.classList.remove('active');
+            document.body.classList.remove('menu-open');
         });
     });
 
-    // Navbar scroll effect
+    // Enhanced navbar scroll effect with color transition
+    let lastScrollY = window.scrollY;
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
+        const currentScrollY = window.scrollY;
+        
+        if (currentScrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
+        
+        // Hide/show navbar on scroll
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            navbar.style.transform = 'translateY(-100%)';
+        } else {
+            navbar.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollY = currentScrollY;
     });
 
-    // Active nav link highlighting
+    // Active nav link highlighting with smooth transitions
     window.addEventListener('scroll', function() {
         let current = '';
         const sections = document.querySelectorAll('section[id]');
@@ -69,22 +85,36 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Animated counter for hero stats
-function animateCounter(element, target, duration = 2000) {
+// Enhanced animated counter with easing
+function animateCounter(element, target, duration = 2500) {
     let start = 0;
-    const increment = target / (duration / 16);
+    const startTime = performance.now();
     
-    function updateCounter() {
-        start += increment;
-        if (start < target) {
-            element.textContent = Math.floor(start);
+    function easeOutQuart(t) {
+        return 1 - (--t) * t * t * t;
+    }
+    
+    function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeOutQuart(progress);
+        
+        const current = Math.floor(easedProgress * target);
+        element.textContent = current;
+        
+        if (progress < 1) {
             requestAnimationFrame(updateCounter);
         } else {
             element.textContent = target;
+            // Add completion animation
+            element.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                element.style.transform = 'scale(1)';
+            }, 200);
         }
     }
     
-    updateCounter();
+    requestAnimationFrame(updateCounter);
 }
 
 // Intersection Observer for scroll animations
@@ -304,19 +334,109 @@ function showNotification(message, type = 'info') {
     }, 5000);
 }
 
-// Service card hover effects
+// Enhanced service card hover effects with particle animation
 document.addEventListener('DOMContentLoaded', function() {
     const serviceCards = document.querySelectorAll('.service-card');
     
     serviceCards.forEach(card => {
+        // Create particle container
+        const particleContainer = document.createElement('div');
+        particleContainer.className = 'particle-container';
+        particleContainer.style.cssText = `
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        `;
+        card.appendChild(particleContainer);
+        
         card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
+            this.style.transform = 'translateY(-15px) scale(1.03)';
+            
+            // Create floating particles
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createParticle(particleContainer);
+                }, i * 100);
+            }
         });
         
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0) scale(1)';
+            
+            // Clear particles
+            setTimeout(() => {
+                particleContainer.innerHTML = '';
+            }, 500);
         });
     });
+    
+    function createParticle(container) {
+        const particle = document.createElement('div');
+        const colors = ['#9c27b0', '#ffd700', '#4caf50', '#f8bbd9'];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        particle.style.cssText = `
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: ${randomColor};
+            border-radius: 50%;
+            bottom: 10px;
+            left: ${Math.random() * 100}%;
+            animation: float-up 2s ease-out forwards;
+            pointer-events: none;
+        `;
+        
+        container.appendChild(particle);
+        
+        // Remove particle after animation
+        setTimeout(() => {
+            if (particle.parentNode) {
+                particle.parentNode.removeChild(particle);
+            }
+        }, 2000);
+    }
+    
+    // Add CSS for particle animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes float-up {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-20px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-40px) scale(0);
+            }
+        }
+        
+        .particle-container {
+            z-index: 0;
+        }
+        
+        .service-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        body.menu-open {
+            overflow: hidden;
+        }
+        
+        .navbar {
+            transition: transform 0.3s ease;
+        }
+    `;
+    document.head.appendChild(style);
 });
 
 // Floating animation for hero elements
@@ -414,6 +534,168 @@ document.addEventListener('DOMContentLoaded', function() {
     if (statsSection) {
         statsObserver.observe(statsSection);
     }
+});
+
+// Portfolio Carousel Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const portfolioCarousel = document.getElementById('portfolio-carousel');
+    const portfolioTrack = document.getElementById('portfolio-track');
+    const prevButton = document.getElementById('portfolio-prev');
+    const nextButton = document.getElementById('portfolio-next');
+    const indicatorsContainer = document.getElementById('carousel-indicators');
+    const slides = document.querySelectorAll('.portfolio-slide');
+    
+    if (!portfolioCarousel || !portfolioTrack || !prevButton || !nextButton) {
+        return; // Exit if carousel elements don't exist
+    }
+    
+    let currentIndex = 0;
+    const slidesToShow = 3;
+    const totalSlides = slides.length;
+    const maxIndex = Math.max(0, totalSlides - slidesToShow);
+    
+    // Create indicators
+    function createIndicators() {
+        indicatorsContainer.innerHTML = '';
+        const numIndicators = Math.ceil(totalSlides / slidesToShow);
+        
+        for (let i = 0; i < numIndicators; i++) {
+            const indicator = document.createElement('button');
+            indicator.className = `carousel-indicator ${i === 0 ? 'active' : ''}`;
+            indicator.addEventListener('click', () => goToSlide(i * slidesToShow));
+            indicatorsContainer.appendChild(indicator);
+        }
+    }
+    
+    // Update carousel position
+    function updateCarousel() {
+        const slideWidth = 100 / slidesToShow; // Each slide takes 33.333% width
+        const translateX = -currentIndex * slideWidth;
+        portfolioTrack.style.transform = `translateX(${translateX}%)`;
+        
+        // Update indicators
+        const indicators = document.querySelectorAll('.carousel-indicator');
+        indicators.forEach((indicator, index) => {
+            const indicatorStart = index * slidesToShow;
+            const indicatorEnd = indicatorStart + slidesToShow - 1;
+            indicator.classList.toggle('active', currentIndex >= indicatorStart && currentIndex <= indicatorEnd);
+        });
+        
+        // Update navigation buttons
+        prevButton.style.opacity = currentIndex === 0 ? '0.5' : '1';
+        nextButton.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
+        prevButton.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
+        nextButton.style.pointerEvents = currentIndex >= maxIndex ? 'none' : 'auto';
+    }
+    
+    // Go to specific slide
+    function goToSlide(index) {
+        currentIndex = Math.max(0, Math.min(maxIndex, index));
+        updateCarousel();
+    }
+    
+    // Next slide
+    function nextSlide() {
+        if (currentIndex < maxIndex) {
+            currentIndex++;
+            updateCarousel();
+        }
+    }
+    
+    // Previous slide
+    function prevSlide() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+        }
+    }
+    
+    // Event listeners
+    nextButton.addEventListener('click', nextSlide);
+    prevButton.addEventListener('click', prevSlide);
+    
+    // Touch/swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    portfolioCarousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    portfolioCarousel.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const swipeDistance = touchStartX - touchEndX;
+        
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+            if (swipeDistance > 0) {
+                nextSlide(); // Swipe left - go to next
+            } else {
+                prevSlide(); // Swipe right - go to previous
+            }
+        }
+    }
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (document.activeElement.closest('.portfolio-carousel-container')) {
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                nextSlide();
+            }
+        }
+    });
+    
+    // Auto-play functionality (optional - can be enabled/disabled)
+    let autoPlayInterval;
+    const autoPlayDelay = 5000; // 5 seconds
+    
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(() => {
+            if (currentIndex >= maxIndex) {
+                goToSlide(0); // Loop back to start
+            } else {
+                nextSlide();
+            }
+        }, autoPlayDelay);
+    }
+    
+    function stopAutoPlay() {
+        clearInterval(autoPlayInterval);
+    }
+    
+    // Pause auto-play on hover
+    portfolioCarousel.addEventListener('mouseenter', stopAutoPlay);
+    portfolioCarousel.addEventListener('mouseleave', startAutoPlay);
+    
+    // Pause auto-play when user interacts
+    [prevButton, nextButton].forEach(button => {
+        button.addEventListener('click', () => {
+            stopAutoPlay();
+            setTimeout(startAutoPlay, autoPlayDelay); // Restart after delay
+        });
+    });
+    
+    // Initialize carousel
+    createIndicators();
+    updateCarousel();
+    startAutoPlay();
+    
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            updateCarousel();
+        }, 250);
+    });
 });
 
 // Add scroll-to-top button
