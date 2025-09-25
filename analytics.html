@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics & Reporting - Search & Display</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <span class="logo-icon"><i class="fas fa-chart-line"></i></span>
+                    <span class="logo-text">Search & Display</span>
+                </a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a href="index.html#services" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="seo.html">SEO Optimization</a>
+                        <a href="ppc.html">PPC Advertising</a>
+                        <a href="social-media.html">Social Media Marketing</a>
+                        <a href="content-marketing.html">Content Marketing</a>
+                        <a href="web-design.html">Web Design</a>
+                        <a href="analytics.html">Analytics & Reporting</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
+                <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="service-hero" style="padding: 120px 0 80px; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); text-align: center;">
+        <div class="container">
+            <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem;">Analytics & Reporting</h1>
+            <p style="font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 2rem;">Track performance with detailed analytics and comprehensive reporting.</p>
+            <a href="#contact" class="btn btn-primary">Setup Analytics</a>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2 class="section-title">Setup Your Analytics</h2>
+                    <p class="contact-description">Ready to track your marketing performance? Contact us today.</p>
+                </div>
+                <div class="contact-form">
+                    <form id="analytics-contact-form">
+                        <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
+                        <div class="form-group"><input type="email" name="email" placeholder="Your Email" required></div>
+                        <div class="form-group"><input type="text" name="business" placeholder="Business Name" required></div>
+                        <div class="form-group"><textarea name="message" placeholder="Tell us about your analytics needs" rows="5" required></textarea></div>
+                        <button type="submit" class="btn btn-primary">Get Analytics Setup</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <span class="logo-icon"><i class="fas fa-chart-line"></i></span>
+                        <span class="logo-text">Search & Display</span>
+                    </div>
+                    <p class="footer-description">Your trusted partner for digital marketing success.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Search & Display. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

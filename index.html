@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search & Display - Digital Marketing Agency</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">
+                    <span class="logo-icon"><i class="fas fa-chart-line"></i></span>
+                    <span class="logo-text">Search & Display</span>
+                </a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#services" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="seo.html">SEO Optimization</a>
+                        <a href="ppc.html">PPC Advertising</a>
+                        <a href="social-media.html">Social Media Marketing</a>
+                        <a href="content-marketing.html">Content Marketing</a>
+                        <a href="web-design.html">Web Design</a>
+                        <a href="analytics.html">Analytics & Reporting</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#portfolio" class="nav-link">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title animate-on-scroll">
+                    Amplify Your Digital Presence with 
+                    <span class="highlight">Search & Display</span>
+                </h1>
+                <p class="hero-description animate-on-scroll">
+                    We help businesses grow through strategic digital marketing solutions. 
+                    From SEO to PPC, social media to content marketing - we've got you covered.
+                </p>
+                <div class="hero-buttons animate-on-scroll">
+                    <a href="#contact" class="btn btn-primary">Get Started Today</a>
+                    <a href="#services" class="btn btn-secondary">Our Services</a>
+                </div>
+                <div class="hero-stats animate-on-scroll">
+                    <div class="stat">
+                        <span class="stat-number" data-target="500">0</span>
+                        <span class="stat-label">Happy Clients</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-target="1200">0</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-target="95">0</span>
+                        <span class="stat-label">Success Rate %</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image animate-on-scroll">
+                <div class="floating-elements">
+                    <div class="floating-card card-1">
+                        <i class="fas fa-chart-line"></i>
+                        <span>SEO Growth</span>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>PPC Campaigns</span>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="fas fa-users"></i>
+                        <span>Social Media</span>
+                    </div>
+                    <div class="floating-card card-4">
+                        <i class="fas fa-pen-nib"></i>
+                        <span>Content Marketing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section id="services" class="services-overview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title animate-on-scroll">Our Digital Marketing Services</h2>
+                <p class="section-subtitle animate-on-scroll">
+                    Comprehensive solutions to boost your online presence and drive results
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll" data-service="seo">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO Optimization</h3>
+                    <p>Improve your search rankings and organic visibility with our proven SEO strategies.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Keyword Research</li>
+                        <li><i class="fas fa-check"></i> On-page Optimization</li>
+                        <li><i class="fas fa-check"></i> Link Building</li>
+                    </ul>
+                    <a href="seo.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card animate-on-scroll" data-service="ppc">
+                    <div class="service-icon">
+                        <i class="fas fa-mouse-pointer"></i>
+                    </div>
+                    <h3>PPC Advertising</h3>
+                    <p>Drive immediate traffic and conversions with targeted pay-per-click campaigns.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Google Ads</li>
+                        <li><i class="fas fa-check"></i> Facebook Ads</li>
+                        <li><i class="fas fa-check"></i> Campaign Optimization</li>
+                    </ul>
+                    <a href="ppc.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card animate-on-scroll" data-service="social">
+                    <div class="service-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3>Social Media Marketing</h3>
+                    <p>Build your brand and engage with customers across all social media platforms.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Content Creation</li>
+                        <li><i class="fas fa-check"></i> Community Management</li>
+                        <li><i class="fas fa-check"></i> Influencer Marketing</li>
+                    </ul>
+                    <a href="social-media.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card animate-on-scroll" data-service="content">
+                    <div class="service-icon">
+                        <i class="fas fa-pen-nib"></i>
+                    </div>
+                    <h3>Content Marketing</h3>
+                    <p>Create compelling content that attracts, engages, and converts your target audience.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Blog Writing</li>
+                        <li><i class="fas fa-check"></i> Video Production</li>
+                        <li><i class="fas fa-check"></i> Content Strategy</li>
+                    </ul>
+                    <a href="content-marketing.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card animate-on-scroll" data-service="web">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web Design</h3>
+                    <p>Create stunning, responsive websites that convert visitors into customers.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Responsive Design</li>
+                        <li><i class="fas fa-check"></i> UX/UI Optimization</li>
+                        <li><i class="fas fa-check"></i> E-commerce Solutions</li>
+                    </ul>
+                    <a href="web-design.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card animate-on-scroll" data-service="analytics">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Analytics & Reporting</h3>
+                    <p>Track your performance with detailed analytics and comprehensive reporting.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Performance Tracking</li>
+                        <li><i class="fas fa-check"></i> Custom Dashboards</li>
+                        <li><i class="fas fa-check"></i> ROI Analysis</li>
+                    </ul>
+                    <a href="analytics.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text animate-on-scroll">
+                    <h2 class="section-title">About Search & Display</h2>
+                    <p class="about-description">
+                        We are a results-driven digital marketing agency with over 10 years of experience 
+                        helping businesses grow their online presence. Our team of experts specializes in 
+                        creating customized strategies that deliver measurable results.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-trophy"></i>
+                            <div>
+                                <h4>Award-Winning Agency</h4>
+                                <p>Recognized for excellence in digital marketing</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <h4>Expert Team</h4>
+                                <p>Certified professionals with proven track records</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-chart-line"></i>
+                            <div>
+                                <h4>Data-Driven Results</h4>
+                                <p>Strategic decisions based on analytics and insights</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image animate-on-scroll">
+                    <div class="image-placeholder">
+                        <i class="fas fa-building"></i>
+                        <p>Our Modern Office</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title animate-on-scroll">Our Success Stories</h2>
+                <p class="section-subtitle animate-on-scroll">
+                    See how we've helped businesses achieve their digital marketing goals
+                </p>
+            </div>
+            <div class="portfolio-filter animate-on-scroll">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="seo">SEO</button>
+                <button class="filter-btn" data-filter="ppc">PPC</button>
+                <button class="filter-btn" data-filter="social">Social Media</button>
+                <button class="filter-btn" data-filter="web">Web Design</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item animate-on-scroll" data-category="seo">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>E-commerce SEO Success</h3>
+                        <p>Increased organic traffic by 300% for a major retailer</p>
+                        <div class="portfolio-stats">
+                            <span class="stat">+300% Traffic</span>
+                            <span class="stat">+150% Revenue</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="ppc">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-mouse-pointer"></i>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>PPC Campaign Optimization</h3>
+                        <p>Reduced cost-per-click by 40% while doubling conversions</p>
+                        <div class="portfolio-stats">
+                            <span class="stat">-40% CPC</span>
+                            <span class="stat">+200% Conversions</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="social">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Social Media Growth</h3>
+                        <p>Built a community of 100k+ engaged followers</p>
+                        <div class="portfolio-stats">
+                            <span class="stat">100k+ Followers</span>
+                            <span class="stat">5x Engagement</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="web">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-code"></i>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Website Redesign</h3>
+                        <p>Improved conversion rate by 85% with new design</p>
+                        <div class="portfolio-stats">
+                            <span class="stat">+85% Conversion</span>
+                            <span class="stat">-50% Bounce Rate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title animate-on-scroll">What Our Clients Say</h2>
+                <p class="section-subtitle animate-on-scroll">
+                    Don't just take our word for it - hear from our satisfied clients
+                </p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial-card active animate-on-scroll">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Search & Display transformed our online presence. Our revenue increased by 200% in just 6 months!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Sarah Johnson</h4>
+                                <span>CEO, TechStart Inc.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Professional, results-driven, and excellent communication. They exceeded all our expectations!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Michael Chen</h4>
+                                <span>Marketing Director, RetailPro</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The best digital marketing agency we've worked with. Their strategies are innovative and effective."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Emily Rodriguez</h4>
+                                <span>Founder, GreenLeaf Co.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-nav">
+                <button class="nav-dot active" data-slide="0"></button>
+                <button class="nav-dot" data-slide="1"></button>
+                <button class="nav-dot" data-slide="2"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info animate-on-scroll">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="contact-description">
+                        Ready to take your digital marketing to the next level? 
+                        Let's discuss how we can help your business grow.
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>hello@searchanddisplay.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Address</h4>
+                                <p>123 Digital Avenue, Suite 100<br>Marketing City, MC 12345</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form animate-on-scroll">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <select id="service" name="service" required>
+                                <option value="">Select a Service</option>
+                                <option value="seo">SEO Optimization</option>
+                                <option value="ppc">PPC Advertising</option>
+                                <option value="social">Social Media Marketing</option>
+                                <option value="content">Content Marketing</option>
+                                <option value="web">Web Design</option>
+                                <option value="analytics">Analytics & Reporting</option>
+                                <option value="consultation">Free Consultation</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Tell us about your project" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <span class="logo-icon"><i class="fas fa-chart-line"></i></span>
+                        <span class="logo-text">Search & Display</span>
+                    </div>
+                    <p class="footer-description">
+                        Your trusted partner for digital marketing success. 
+                        We help businesses grow through innovative strategies and proven results.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="seo.html">SEO Optimization</a></li>
+                        <li><a href="ppc.html">PPC Advertising</a></li>
+                        <li><a href="social-media.html">Social Media Marketing</a></li>
+                        <li><a href="content-marketing.html">Content Marketing</a></li>
+                        <li><a href="web-design.html">Web Design</a></li>
+                        <li><a href="analytics.html">Analytics & Reporting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> hello@searchanddisplay.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Digital Avenue, Suite 100</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Search & Display. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

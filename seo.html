@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Optimization Services - Search & Display</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .service-hero {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            text-align: center;
+        }
+        .service-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        .service-hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .breadcrumb span {
+            color: var(--text-light);
+        }
+        .service-content {
+            padding: 80px 0;
+        }
+        .service-details {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+        .service-main h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+        .service-main p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        .service-features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        .service-features-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--background-secondary);
+            border-radius: 8px;
+        }
+        .service-features-list i {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+        .service-sidebar {
+            background: var(--background-secondary);
+            padding: 2rem;
+            border-radius: 16px;
+            height: fit-content;
+        }
+        .service-cta {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .service-cta h3 {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        .service-list {
+            list-style: none;
+        }
+        .service-list li {
+            margin-bottom: 0.5rem;
+        }
+        .service-list a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .service-list a:hover,
+        .service-list a.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        .process-section {
+            background: var(--background-secondary);
+            padding: 80px 0;
+        }
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            background: var(--background-primary);
+            border-radius: 16px;
+            position: relative;
+        }
+        .process-number {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+        .process-step h3 {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        @media (max-width: 768px) {
+            .service-details {
+                grid-template-columns: 1fr;
+            }
+            .service-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <span class="logo-icon"><i class="fas fa-chart-line"></i></span>
+                    <span class="logo-text">Search & Display</span>
+                </a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="index.html#services" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="seo.html">SEO Optimization</a>
+                        <a href="ppc.html">PPC Advertising</a>
+                        <a href="social-media.html">Social Media Marketing</a>
+                        <a href="content-marketing.html">Content Marketing</a>
+                        <a href="web-design.html">Web Design</a>
+                        <a href="analytics.html">Analytics & Reporting</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#portfolio" class="nav-link">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Service Hero -->
+    <section class="service-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="index.html#services">Services</a>
+                <span>/</span>
+                <span>SEO Optimization</span>
+            </div>
+            <h1>SEO Optimization Services</h1>
+            <p>Boost your search engine rankings and drive organic traffic with our comprehensive SEO strategies. We help businesses dominate search results and increase online visibility.</p>
+            <a href="#contact" class="btn btn-primary">Get SEO Audit</a>
+        </div>
+    </section>
+
+    <!-- Service Content -->
+    <section class="service-content">
+        <div class="container">
+            <div class="service-details">
+                <div class="service-main">
+                    <h2>Why Choose Our SEO Services?</h2>
+                    <p>Search Engine Optimization is crucial for business success in today's digital landscape. Our SEO experts use proven strategies and the latest techniques to improve your website's visibility, drive qualified traffic, and increase conversions.</p>
+                    
+                    <p>We take a comprehensive approach to SEO, focusing on both technical optimization and content strategy to ensure long-term success. Our data-driven methods deliver measurable results that impact your bottom line.</p>
+
+                    <h2>Our SEO Services Include:</h2>
+                    <ul class="service-features-list">
+                        <li>
+                            <i class="fas fa-search"></i>
+                            <div>
+                                <strong>Keyword Research & Analysis</strong><br>
+                                Identify high-value keywords that your customers are searching for
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-code"></i>
+                            <div>
+                                <strong>Technical SEO Optimization</strong><br>
+                                Improve site speed, mobile responsiveness, and crawlability
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-edit"></i>
+                            <div>
+                                <strong>On-Page SEO</strong><br>
+                                Optimize content, meta tags, headers, and internal linking
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-link"></i>
+                            <div>
+                                <strong>Link Building</strong><br>
+                                Build high-quality backlinks to increase domain authority
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Local SEO</strong><br>
+                                Optimize for local search results and Google My Business
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-chart-bar"></i>
+                            <div>
+                                <strong>SEO Analytics & Reporting</strong><br>
+                                Track performance and provide detailed monthly reports
+                            </div>
+                        </li>
+                    </ul>
+
+                    <h2>SEO Benefits for Your Business</h2>
+                    <p>Investing in SEO provides long-term benefits that compound over time. Unlike paid advertising, SEO builds sustainable organic traffic that doesn't disappear when you stop paying. Our SEO services help you:</p>
+                    
+                    <ul class="service-features-list">
+                        <li><i class="fas fa-arrow-up"></i> Increase organic website traffic by 200-500%</li>
+                        <li><i class="fas fa-trophy"></i> Achieve top 3 rankings for target keywords</li>
+                        <li><i class="fas fa-users"></i> Attract qualified leads and customers</li>
+                        <li><i class="fas fa-dollar-sign"></i> Improve ROI and reduce customer acquisition costs</li>
+                        <li><i class="fas fa-building"></i> Build brand authority and credibility</li>
+                        <li><i class="fas fa-globe"></i> Expand your market reach and visibility</li>
+                    </ul>
+                </div>
+
+                <div class="service-sidebar">
+                    <div class="service-cta">
+                        <h3>Ready to Get Started?</h3>
+                        <p>Get a free SEO audit and see how we can improve your rankings.</p>
+                        <a href="#contact" class="btn btn-primary">Free SEO Audit</a>
+                    </div>
+                    
+                    <h3>Our Other Services</h3>
+                    <ul class="service-list">
+                        <li><a href="seo.html" class="active">SEO Optimization</a></li>
+                        <li><a href="ppc.html">PPC Advertising</a></li>
+                        <li><a href="social-media.html">Social Media Marketing</a></li>
+                        <li><a href="content-marketing.html">Content Marketing</a></li>
+                        <li><a href="web-design.html">Web Design</a></li>
+                        <li><a href="analytics.html">Analytics & Reporting</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our SEO Process</h2>
+                <p class="section-subtitle">We follow a proven methodology to deliver exceptional SEO results</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <h3>SEO Audit</h3>
+                    <p>Comprehensive analysis of your website's current SEO performance and opportunities for improvement.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <h3>Strategy Development</h3>
+                    <p>Create a customized SEO strategy based on your business goals and target audience.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <h3>Implementation</h3>
+                    <p>Execute on-page and technical optimizations, content creation, and link building campaigns.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <h3>Monitoring & Reporting</h3>
+                    <p>Track rankings, traffic, and conversions with detailed monthly reports and ongoing optimization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info animate-on-scroll">
+                    <h2 class="section-title">Get Your Free SEO Audit</h2>
+                    <p class="contact-description">
+                        Ready to improve your search rankings? Contact us today for a free SEO audit and consultation.
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>seo@searchanddisplay.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Response Time</h4>
+                                <p>Within 24 hours</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form animate-on-scroll">
+                    <form id="seo-contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="url" id="website" name="website" placeholder="Your Website URL" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="seo-service" name="seo-service" required>
+                                <option value="">Select SEO Service</option>
+                                <option value="audit">Free SEO Audit</option>
+                                <option value="local">Local SEO</option>
+                                <option value="ecommerce">E-commerce SEO</option>
+                                <option value="enterprise">Enterprise SEO</option>
+                                <option value="consultation">SEO Consultation</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Tell us about your SEO goals and current challenges" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Request Free SEO Audit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <span class="logo-icon"><i class="fas fa-chart-line"></i></span>
+                        <span class="logo-text">Search & Display</span>
+                    </div>
+                    <p class="footer-description">
+                        Your trusted partner for digital marketing success. 
+                        We help businesses grow through innovative strategies and proven results.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="seo.html">SEO Optimization</a></li>
+                        <li><a href="ppc.html">PPC Advertising</a></li>
+                        <li><a href="social-media.html">Social Media Marketing</a></li>
+                        <li><a href="content-marketing.html">Content Marketing</a></li>
+                        <li><a href="web-design.html">Web Design</a></li>
+                        <li><a href="analytics.html">Analytics & Reporting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> hello@searchanddisplay.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Digital Avenue, Suite 100</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Search & Display. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

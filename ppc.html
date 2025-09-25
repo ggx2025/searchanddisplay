@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPC Advertising Services - Search & Display</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .service-hero {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            text-align: center;
+        }
+        .service-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        .service-hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .breadcrumb span {
+            color: var(--text-light);
+        }
+        .service-content {
+            padding: 80px 0;
+        }
+        .service-details {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+        .service-main h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+        .service-main p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        .service-features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        .service-features-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--background-secondary);
+            border-radius: 8px;
+        }
+        .service-features-list i {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+        .service-sidebar {
+            background: var(--background-secondary);
+            padding: 2rem;
+            border-radius: 16px;
+            height: fit-content;
+        }
+        .service-cta {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .service-cta h3 {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        .service-list {
+            list-style: none;
+        }
+        .service-list li {
+            margin-bottom: 0.5rem;
+        }
+        .service-list a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .service-list a:hover,
+        .service-list a.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        .platforms-section {
+            background: var(--background-secondary);
+            padding: 80px 0;
+        }
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .platform-card {
+            background: var(--background-primary);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        .platform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-large);
+        }
+        .platform-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+        @media (max-width: 768px) {
+            .service-details {
+                grid-template-columns: 1fr;
+            }
+            .service-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <span class="logo-icon"><i class="fas fa-chart-line"></i></span>
+                    <span class="logo-text">Search & Display</span>
+                </a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="index.html#services" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="seo.html">SEO Optimization</a>
+                        <a href="ppc.html">PPC Advertising</a>
+                        <a href="social-media.html">Social Media Marketing</a>
+                        <a href="content-marketing.html">Content Marketing</a>
+                        <a href="web-design.html">Web Design</a>
+                        <a href="analytics.html">Analytics & Reporting</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#portfolio" class="nav-link">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Service Hero -->
+    <section class="service-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="index.html#services">Services</a>
+                <span>/</span>
+                <span>PPC Advertising</span>
+            </div>
+            <h1>PPC Advertising Services</h1>
+            <p>Drive immediate traffic and maximize ROI with our expertly managed pay-per-click advertising campaigns. Get instant visibility and qualified leads from day one.</p>
+            <a href="#contact" class="btn btn-primary">Start PPC Campaign</a>
+        </div>
+    </section>
+
+    <!-- Service Content -->
+    <section class="service-content">
+        <div class="container">
+            <div class="service-details">
+                <div class="service-main">
+                    <h2>Why Choose Our PPC Services?</h2>
+                    <p>Pay-per-click advertising offers immediate results and precise targeting capabilities. Our PPC experts create and manage campaigns that deliver qualified traffic, increase conversions, and maximize your advertising budget.</p>
+                    
+                    <p>We leverage advanced targeting options, compelling ad copy, and data-driven optimization to ensure your PPC campaigns generate the highest possible return on investment.</p>
+
+                    <h2>Our PPC Services Include:</h2>
+                    <ul class="service-features-list">
+                        <li>
+                            <i class="fab fa-google"></i>
+                            <div>
+                                <strong>Google Ads Management</strong><br>
+                                Search, Display, Shopping, and YouTube advertising campaigns
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fab fa-facebook"></i>
+                            <div>
+                                <strong>Facebook & Instagram Ads</strong><br>
+                                Social media advertising with precise audience targeting
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fab fa-linkedin"></i>
+                            <div>
+                                <strong>LinkedIn Advertising</strong><br>
+                                B2B focused campaigns for lead generation and brand awareness
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-search"></i>
+                            <div>
+                                <strong>Keyword Research & Strategy</strong><br>
+                                Identify high-converting keywords and negative keyword lists
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-chart-line"></i>
+                            <div>
+                                <strong>Campaign Optimization</strong><br>
+                                Continuous testing and optimization for better performance
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-target"></i>
+                            <div>
+                                <strong>Landing Page Optimization</strong><br>
+                                Improve conversion rates with optimized landing pages
+                            </div>
+                        </li>
+                    </ul>
+
+                    <h2>PPC Campaign Types We Manage</h2>
+                    <ul class="service-features-list">
+                        <li><i class="fas fa-search"></i> Search Campaigns - Target users actively searching for your products</li>
+                        <li><i class="fas fa-eye"></i> Display Campaigns - Build brand awareness across millions of websites</li>
+                        <li><i class="fas fa-shopping-cart"></i> Shopping Campaigns - Showcase your products with images and prices</li>
+                        <li><i class="fas fa-play"></i> Video Campaigns - Engage audiences with YouTube advertising</li>
+                        <li><i class="fas fa-mobile-alt"></i> App Campaigns - Drive app downloads and in-app actions</li>
+                        <li><i class="fas fa-location-arrow"></i> Local Campaigns - Promote your physical locations and services</li>
+                    </ul>
+
+                    <h2>Benefits of PPC Advertising</h2>
+                    <p>Our PPC management services deliver immediate and measurable results:</p>
+                    
+                    <ul class="service-features-list">
+                        <li><i class="fas fa-rocket"></i> Instant visibility in search results</li>
+                        <li><i class="fas fa-bullseye"></i> Precise audience targeting</li>
+                        <li><i class="fas fa-dollar-sign"></i> Measurable ROI and performance tracking</li>
+                        <li><i class="fas fa-clock"></i> Quick campaign setup and deployment</li>
+                        <li><i class="fas fa-chart-bar"></i> Full control over budget and bidding</li>
+                        <li><i class="fas fa-cogs"></i> Flexible campaign adjustments</li>
+                    </ul>
+                </div>
+
+                <div class="service-sidebar">
+                    <div class="service-cta">
+                        <h3>Ready to Start?</h3>
+                        <p>Get a free PPC audit and campaign strategy consultation.</p>
+                        <a href="#contact" class="btn btn-primary">Free PPC Audit</a>
+                    </div>
+                    
+                    <h3>Our Other Services</h3>
+                    <ul class="service-list">
+                        <li><a href="seo.html">SEO Optimization</a></li>
+                        <li><a href="ppc.html" class="active">PPC Advertising</a></li>
+                        <li><a href="social-media.html">Social Media Marketing</a></li>
+                        <li><a href="content-marketing.html">Content Marketing</a></li>
+                        <li><a href="web-design.html">Web Design</a></li>
+                        <li><a href="analytics.html">Analytics & Reporting</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platforms Section -->
+    <section class="platforms-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">PPC Platforms We Manage</h2>
+                <p class="section-subtitle">We create and optimize campaigns across all major advertising platforms</p>
+            </div>
+            <div class="platforms-grid">
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <h3>Google Ads</h3>
+                    <p>Search, Display, Shopping, and YouTube campaigns to reach customers at every stage of their journey.</p>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <h3>Facebook Ads</h3>
+                    <p>Highly targeted social media advertising on Facebook and Instagram with advanced audience options.</p>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3>LinkedIn Ads</h3>
+                    <p>B2B focused advertising platform perfect for professional services and lead generation.</p>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-microsoft"></i>
+                    </div>
+                    <h3>Microsoft Ads</h3>
+                    <p>Reach audiences on Bing search network with typically lower competition and costs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info animate-on-scroll">
+                    <h2 class="section-title">Start Your PPC Campaign</h2>
+                    <p class="contact-description">
+                        Ready to drive immediate traffic and conversions? Contact us for a free PPC audit and strategy consultation.
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>ppc@searchanddisplay.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-calendar"></i>
+                            <div>
+                                <h4>Campaign Launch</h4>
+                                <p>Within 1-2 weeks</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form animate-on-scroll">
+                    <form id="ppc-contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="company" name="company" placeholder="Company Name" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="budget" name="budget" required>
+                                <option value="">Monthly PPC Budget</option>
+                                <option value="1000-2500">$1,000 - $2,500</option>
+                                <option value="2500-5000">$2,500 - $5,000</option>
+                                <option value="5000-10000">$5,000 - $10,000</option>
+                                <option value="10000+">$10,000+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select id="platform" name="platform" required>
+                                <option value="">Preferred Platform</option>
+                                <option value="google">Google Ads</option>
+                                <option value="facebook">Facebook Ads</option>
+                                <option value="linkedin">LinkedIn Ads</option>
+                                <option value="multiple">Multiple Platforms</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Tell us about your PPC goals and target audience" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Request PPC Strategy</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <span class="logo-icon"><i class="fas fa-chart-line"></i></span>
+                        <span class="logo-text">Search & Display</span>
+                    </div>
+                    <p class="footer-description">
+                        Your trusted partner for digital marketing success. 
+                        We help businesses grow through innovative strategies and proven results.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="seo.html">SEO Optimization</a></li>
+                        <li><a href="ppc.html">PPC Advertising</a></li>
+                        <li><a href="social-media.html">Social Media Marketing</a></li>
+                        <li><a href="content-marketing.html">Content Marketing</a></li>
+                        <li><a href="web-design.html">Web Design</a></li>
+                        <li><a href="analytics.html">Analytics & Reporting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> hello@searchanddisplay.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Digital Avenue, Suite 100</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Search & Display. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
