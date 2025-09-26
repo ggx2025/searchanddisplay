@@ -117,6 +117,70 @@ function animateCounter(element, target, duration = 2500) {
     requestAnimationFrame(updateCounter);
 }
 
+// Animated counter with prefix and suffix
+function animateCounterWithPrefix(element, target, prefix = '', suffix = '', duration = 2500) {
+    let start = 0;
+    const startTime = performance.now();
+    
+    function easeOutQuart(t) {
+        return 1 - (--t) * t * t * t;
+    }
+    
+    function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeOutQuart(progress);
+        
+        const current = Math.floor(easedProgress * target);
+        element.textContent = prefix + current + suffix;
+        
+        if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = prefix + target + suffix;
+            // Add completion animation
+            element.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                element.style.transform = 'scale(1)';
+            }, 200);
+        }
+    }
+    
+    requestAnimationFrame(updateCounter);
+}
+
+// Animated counter with suffix only
+function animateCounterWithSuffix(element, target, suffix = '', duration = 2500) {
+    let start = 0;
+    const startTime = performance.now();
+    
+    function easeOutQuart(t) {
+        return 1 - (--t) * t * t * t;
+    }
+    
+    function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeOutQuart(progress);
+        
+        const current = Math.floor(easedProgress * target);
+        element.textContent = current + suffix;
+        
+        if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = target + suffix;
+            // Add completion animation
+            element.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                element.style.transform = 'scale(1)';
+            }, 200);
+        }
+    }
+    
+    requestAnimationFrame(updateCounter);
+}
+
 // Intersection Observer for scroll animations
 const observerOptions = {
     threshold: 0.1,
@@ -132,8 +196,20 @@ const observer = new IntersectionObserver(function(entries) {
             if (entry.target.classList.contains('hero-stats')) {
                 const counters = entry.target.querySelectorAll('.stat-number');
                 counters.forEach(counter => {
-                    const target = parseInt(counter.getAttribute('data-target'));
-                    animateCounter(counter, target);
+                    const target = counter.getAttribute('data-target');
+                    if (target === '50' && counter.closest('.stat').querySelector('.stat-label').textContent.includes('Million')) {
+                        // For $50M+ display
+                        animateCounterWithPrefix(counter, 50, '$', 'M+');
+                    } else if (target === '12') {
+                        // For 12X display
+                        animateCounterWithSuffix(counter, 12, 'X');
+                    } else if (target === '50' && counter.closest('.stat').querySelector('.stat-label').textContent.includes('Reduction')) {
+                        // For 50% display
+                        animateCounterWithSuffix(counter, 50, '%');
+                    } else {
+                        // Default counter animation
+                        animateCounter(counter, parseInt(target));
+                    }
                 });
             }
         }
@@ -481,23 +557,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Loading animation for service links
+// Service links functionality - Direct navigation with enhanced debugging
 document.addEventListener('DOMContentLoaded', function() {
     const serviceLinks = document.querySelectorAll('.service-link');
+    console.log('Found service links:', serviceLinks.length);
     
-    serviceLinks.forEach(link => {
+    serviceLinks.forEach((link, index) => {
+        const href = link.getAttribute('href');
+        console.log(`Service link ${index + 1}: ${href}`);
+        
+        // Ensure the link is clickable
+        link.style.pointerEvents = 'auto';
+        link.style.cursor = 'pointer';
+        
         link.addEventListener('click', function(e) {
+            console.log(`Clicked on service link: ${href}`);
             if (this.getAttribute('href').endsWith('.html')) {
-                e.preventDefault();
-                
-                // Add loading state
-                this.innerHTML = 'Loading... <i class="fas fa-spinner fa-spin"></i>';
-                
-                // Simulate page load delay
+                // Add a subtle visual feedback without preventing navigation
+                this.style.transform = 'scale(0.95)';
                 setTimeout(() => {
-                    window.location.href = this.getAttribute('href');
-                }, 1000);
+                    this.style.transform = 'scale(1)';
+                }, 150);
+                // Allow normal navigation to proceed
             }
+        });
+        
+        // Additional event listener for debugging
+        link.addEventListener('mousedown', function() {
+            console.log(`Mouse down on: ${href}`);
         });
     });
 });
@@ -567,10 +654,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Update carousel position
+    // Update carousel position with consistent smooth movement
     function updateCarousel() {
         const slideWidth = 100 / slidesToShow; // Each slide takes 33.333% width
         const translateX = -currentIndex * slideWidth;
+        
         portfolioTrack.style.transform = `translateX(${translateX}%)`;
         
         // Update indicators
@@ -588,23 +676,27 @@ document.addEventListener('DOMContentLoaded', function() {
         nextButton.style.pointerEvents = currentIndex >= maxIndex ? 'none' : 'auto';
     }
     
-    // Go to specific slide
+    // Go to specific slide with consistent animation
     function goToSlide(index) {
         currentIndex = Math.max(0, Math.min(maxIndex, index));
+        // Ensure transition is properly set
+        portfolioTrack.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
         updateCarousel();
     }
     
-    // Next slide
+    // Next slide with consistent movement
     function nextSlide() {
         if (currentIndex < maxIndex) {
+            portfolioTrack.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             currentIndex++;
             updateCarousel();
         }
     }
     
-    // Previous slide
+    // Previous slide with consistent movement
     function prevSlide() {
         if (currentIndex > 0) {
+            portfolioTrack.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             currentIndex--;
             updateCarousel();
         }

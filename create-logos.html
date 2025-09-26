@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Generator</title>
+    <style>
+        .logo-canvas {
+            display: none;
+        }
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .logo-item {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .logo-item canvas {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-grid">
+        <!-- Logo canvases will be generated here -->
+    </div>
+    
+    <script>
+        const logos = [
+            {name: 'Interview Kickstart', filename: 'interview-kickstart.png', bg: '#4f46e5', text: 'IK'},
+            {name: 'Livspace', filename: 'livspace.png', bg: '#e11d48', text: 'LS'},
+            {name: 'Rentomojo', filename: 'rentomojo.png', bg: '#dc2626', text: 'RM'},
+            {name: 'Outco.io', filename: 'outco.png', bg: '#059669', text: 'OC'},
+            {name: 'Emeritus', filename: 'emeritus.png', bg: '#10b981', text: 'EM'},
+            {name: 'Property Share', filename: 'property-share.png', bg: '#0ea5e9', text: 'PS'},
+            {name: 'PocketFM', filename: 'pocketfm.png', bg: '#f59e0b', text: 'PFM'},
+            {name: 'Techinium', filename: 'techinium.png', bg: '#8b5cf6', text: 'TN'},
+            {name: 'Launch & Lift', filename: 'launch-lift.png', bg: '#06b6d4', text: 'L&L'},
+            {name: 'Malama Cabs', filename: 'malama-cabs.png', bg: '#84cc16', text: 'MC'}
+        ];
+
+        const logoGrid = document.querySelector('.logo-grid');
+
+        logos.forEach(logo => {
+            // Create container
+            const logoItem = document.createElement('div');
+            logoItem.className = 'logo-item';
+            
+            // Create canvas
+            const canvas = document.createElement('canvas');
+            canvas.width = 100;
+            canvas.height = 100;
+            
+            const ctx = canvas.getContext('2d');
+            
+            // Draw logo
+            ctx.fillStyle = logo.bg;
+            ctx.fillRect(0, 0, 100, 100);
+            
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 24px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(logo.text, 50, 50);
+            
+            // Add to container
+            logoItem.appendChild(canvas);
+            
+            const label = document.createElement('p');
+            label.textContent = logo.name;
+            logoItem.appendChild(label);
+            
+            const downloadBtn = document.createElement('button');
+            downloadBtn.textContent = 'Download';
+            downloadBtn.onclick = () => {
+                const link = document.createElement('a');
+                link.download = logo.filename;
+                link.href = canvas.toDataURL();
+                link.click();
+            };
+            logoItem.appendChild(downloadBtn);
+            
+            logoGrid.appendChild(logoItem);
+        });
+    </script>
+</body>
+</html>

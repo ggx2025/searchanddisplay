@@ -1,0 +1,13 @@
+<svg width="200" height="80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Green square bracket logo mark -->
+  <rect x="15" y="15" width="6" height="50" fill="#10B981" rx="2"/>
+  <rect x="15" y="15" width="25" height="6" fill="#10B981" rx="2"/>
+  <rect x="15" y="59" width="25" height="6" fill="#10B981" rx="2"/>
+  <rect x="35" y="25" width="6" height="30" fill="#10B981" rx="2"/>
+  
+  <!-- Large "E" inside -->
+  <text x="47" y="45" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#10B981" text-anchor="middle" dominant-baseline="middle">E</text>
+  
+  <!-- EMERITUS text -->
+  <text x="70" y="45" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#333" text-anchor="start" dominant-baseline="middle">EMERITUS</text>
+</svg>

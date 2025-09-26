@@ -1,0 +1,13 @@
+<svg width="200" height="120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="200" height="120" fill="#D73527" rx="12"/>
+  
+  <!-- White speech bubble shape for logo mark -->
+  <path d="M40 25 L85 25 Q95 25 95 35 L95 55 Q95 65 85 65 L65 65 L55 75 L55 65 L45 65 Q40 65 40 60 L40 35 Q40 25 50 25 Z" fill="white"/>
+  
+  <!-- Red 'rn' letters inside speech bubble -->
+  <text x="67.5" y="50" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#D73527" text-anchor="middle" dominant-baseline="middle">rn</text>
+  
+  <!-- rentomojo text -->
+  <text x="40" y="95" font-family="Arial, sans-serif" font-size="24" font-weight="normal" fill="white" text-anchor="start">rentomojo</text>
+</svg>

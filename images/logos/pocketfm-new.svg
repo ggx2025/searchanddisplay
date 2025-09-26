@@ -1,0 +1,16 @@
+<svg width="200" height="80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Pink rounded square background for logo mark -->
+  <rect x="15" y="15" width="50" height="50" fill="#E11D48" rx="12"/>
+  
+  <!-- White speech bubble icon -->
+  <path d="M25 25 L50 25 Q55 25 55 30 L55 45 Q55 50 50 50 L35 50 L30 55 L30 50 L30 50 Q25 50 25 45 L25 30 Q25 25 30 25 Z" fill="white"/>
+  
+  <!-- Radio icon inside bubble -->
+  <rect x="32" y="32" width="8" height="5" fill="#E11D48" rx="1"/>
+  <rect x="42" y="30" width="6" height="2" fill="#E11D48" rx="1"/>
+  <rect x="42" y="34" width="6" height="2" fill="#E11D48" rx="1"/>
+  <rect x="42" y="38" width="6" height="2" fill="#E11D48" rx="1"/>
+  
+  <!-- Pocket FM text -->
+  <text x="80" y="45" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#E11D48" text-anchor="start" dominant-baseline="middle">Pocket FM</text>
+</svg>

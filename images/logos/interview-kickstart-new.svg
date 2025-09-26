@@ -1,0 +1,11 @@
+<svg width="200" height="80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Circular blue background -->
+  <circle cx="40" cy="40" r="35" fill="#4F46E5"/>
+  
+  <!-- White checkmark/arrow representing success -->
+  <path d="M25 40 L35 50 L55 30" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  
+  <!-- Company name -->
+  <text x="90" y="35" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#4F46E5" text-anchor="start">Interview</text>
+  <text x="90" y="52" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#4F46E5" text-anchor="start">Kickstart</text>
+</svg>
