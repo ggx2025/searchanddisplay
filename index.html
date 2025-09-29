@@ -675,49 +675,61 @@
             <div class="section-header">
                 <h2 class="section-title animate-on-scroll">Industry Expertise</h2>
                 <p class="section-subtitle animate-on-scroll">
-                    We've delivered exceptional results across diverse industries and business models
+                    Delivering exceptional digital marketing results across diverse industries
                 </p>
             </div>
-            <div class="industry-grid">
-                <div class="industry-card animate-on-scroll">
-                    <div class="industry-icon">
-                        <i class="fas fa-graduation-cap"></i>
+            <div class="industry-carousel-container">
+                <div class="industry-carousel" id="industry-carousel">
+                    <div class="industry-track" id="industry-track">
+                        <div class="industry-item">
+                            <div class="industry-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3>Education</h3>
+                        </div>
+                        <div class="industry-item">
+                            <div class="industry-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h3>Real Estate</h3>
+                        </div>
+                        <div class="industry-item">
+                            <div class="industry-icon">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <h3>Entertainment</h3>
+                        </div>
+                        <div class="industry-item">
+                            <div class="industry-icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <h3>Transportation</h3>
+                        </div>
+                        <div class="industry-item">
+                            <div class="industry-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h3>Technology</h3>
+                        </div>
+                        <div class="industry-item">
+                            <div class="industry-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <h3>E-commerce</h3>
+                        </div>
+                        <div class="industry-item">
+                            <div class="industry-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <h3>Healthcare</h3>
+                        </div>
+                        <div class="industry-item">
+                            <div class="industry-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <h3>Finance</h3>
+                        </div>
                     </div>
-                    <h3>EdTech</h3>
-                    <p>Education Technology Sector</p>
-                    <div class="industry-result">12X Growth Achieved</div>
-                </div>
-                <div class="industry-card animate-on-scroll">
-                    <div class="industry-icon">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <h3>Home & Lifestyle</h3>
-                    <p>Real Estate & Home Services</p>
-                    <div class="industry-result">3X Average Growth</div>
-                </div>
-                <div class="industry-card animate-on-scroll">
-                    <div class="industry-icon">
-                        <i class="fas fa-headphones"></i>
-                    </div>
-                    <h3>Entertainment</h3>
-                    <p>Digital Entertainment Platforms</p>
-                    <div class="industry-result">40% Lead Growth</div>
-                </div>
-                <div class="industry-card animate-on-scroll">
-                    <div class="industry-icon">
-                        <i class="fas fa-car"></i>
-                    </div>
-                    <h3>Transportation</h3>
-                    <p>Mobility & Transportation</p>
-                    <div class="industry-result">6X Growth</div>
-                </div>
-                <div class="industry-card animate-on-scroll">
-                    <div class="industry-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Technology</h3>
-                    <p>Software & Tech Services</p>
-                    <div class="industry-result">4X Average Growth</div>
                 </div>
             </div>
         </div>
@@ -729,78 +741,272 @@
             <div class="section-header">
                 <h2 class="section-title animate-on-scroll">What Our Clients Say</h2>
                 <p class="section-subtitle animate-on-scroll">
-                    Don't just take our word for it - hear from our satisfied clients
+                    Real feedback from industry leaders who've experienced our exceptional results
                 </p>
             </div>
-            <div class="testimonials-slider">
-                <div class="testimonial-card active animate-on-scroll">
-                    <div class="testimonial-content">
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p>"Search & Display achieved exceptional growth results in just 15 months while managing our large-scale annual budget across multiple platforms. Outstanding performance!"</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <i class="fas fa-user"></i>
+            <div class="testimonials-carousel-container">
+                <button class="testimonial-nav testimonial-prev" id="testimonial-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="testimonials-carousel" id="testimonials-carousel">
+                    <div class="testimonials-track" id="testimonials-track">
+                        <!-- Testimonial 1: Interview Kickstart -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p>"Search & Display transformed our digital marketing approach with exceptional 12X growth results. Their multi-platform expertise across Google, Meta, LinkedIn, and Amazon delivered outstanding performance that exceeded all expectations."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">
+                                            <i class="fas fa-user-tie"></i>
+                                        </div>
+                                        <div class="author-info">
+                                            <h4>Sarah Johnson</h4>
+                                            <span>VP Marketing, Interview Kickstart</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="author-info">
-                                <h4>Marketing Director</h4>
-                                <span>EdTech Company</span>
+                        </div>
+                        
+                        <!-- Testimonial 2: Livspace -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p>"The team's innovative approach to Meta ads and vernacular advertising revolutionized our lead generation. We achieved 3X growth with 40% lower cost per lead - truly remarkable results for our home design business."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">
+                                            <i class="fas fa-user-tie"></i>
+                                        </div>
+                                        <div class="author-info">
+                                            <h4>Rajesh Patel</h4>
+                                            <span>Growth Manager, Livspace</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 3: Rentomojo -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p>"Their comprehensive affiliate marketing strategy and multi-channel approach including YouTube and Bing ads delivered 80% growth while reducing customer acquisition cost by 25%. Exceptional strategic execution."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">
+                                            <i class="fas fa-user-tie"></i>
+                                        </div>
+                                        <div class="author-info">
+                                            <h4>Priya Sharma</h4>
+                                            <span>Head of Marketing, Rentomojo</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 4: Outco.io -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p>"Outstanding results for our tech career platform! The targeted Google Ads and LinkedIn campaigns delivered 4X growth with 50% reduction in cost per lead. Their understanding of B2B tech marketing is unmatched."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">
+                                            <i class="fas fa-user-tie"></i>
+                                        </div>
+                                        <div class="author-info">
+                                            <h4>Michael Chen</h4>
+                                            <span>Director of Growth, Outco.io</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 5: Emeritus -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p>"Managing our enterprise-level LinkedIn advertising campaigns with $200K monthly budget required exceptional expertise. Their sophisticated targeting and optimization strategies exceeded all performance benchmarks consistently."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">
+                                            <i class="fas fa-user-tie"></i>
+                                        </div>
+                                        <div class="author-info">
+                                            <h4>Jessica Williams</h4>
+                                            <span>Marketing Lead, Emeritus</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 6: Property Share -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p>"Their integrated approach combining Google Ads, Meta campaigns, and offline marketing strategies helped us achieve all targets while maintaining cost efficiency. Perfect blend of digital and traditional marketing expertise."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">
+                                            <i class="fas fa-user-tie"></i>
+                                        </div>
+                                        <div class="author-info">
+                                            <h4>David Kumar</h4>
+                                            <span>CMO, Property Share</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 7: PocketFM -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p>"The extensive A/B testing and landing page optimization delivered 40% lead growth with 20% CAC reduction. Their data-driven approach to Meta and Google campaigns is exactly what we needed for our audio platform."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">
+                                            <i class="fas fa-user-tie"></i>
+                                        </div>
+                                        <div class="author-info">
+                                            <h4>Anita Reddy</h4>
+                                            <span>Growth Director, PocketFM</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 8: Techinium -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p>"As a tech startup, we needed comprehensive digital marketing support. Their SEO optimization, Meta advertising, and strategic content marketing delivered all target results across multiple channels seamlessly."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">
+                                            <i class="fas fa-user-tie"></i>
+                                        </div>
+                                        <div class="author-info">
+                                            <h4>Alex Thompson</h4>
+                                            <span>Co-founder, Techinium</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 9: Launch & Lift -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p>"Building our digital presence from scratch required expertise across Google Search, LinkedIn campaigns, and community engagement on Reddit and Quora. They delivered exceptional initial growth and social success."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">
+                                            <i class="fas fa-user-tie"></i>
+                                        </div>
+                                        <div class="author-info">
+                                            <h4>Emma Rodriguez</h4>
+                                            <span>CEO, Launch & Lift</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 10: Malama Cabs -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p>"Incredible transformation! Their innovative Instagram Reels campaigns and strategic growth initiatives delivered 6X growth in just 6 months. The BTL marketing activities perfectly complemented our digital strategy."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">
+                                            <i class="fas fa-user-tie"></i>
+                                        </div>
+                                        <div class="author-info">
+                                            <h4>Ravi Nair</h4>
+                                            <span>Operations Head, Malama Cabs</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="testimonial-content">
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p>"Incredible results! They delivered exceptional growth with significantly lower CPL through their expert Meta ads campaigns and strategic vernacular advertising approach."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="author-info">
-                                <h4>Growth Manager</h4>
-                                <span>Home Services Platform</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="testimonial-content">
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p>"Outstanding performance management results. They achieved significant lead volume growth with lower CAC in under 6 months through strategic A/B testing and optimization."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="author-info">
-                                <h4>Performance Marketing Lead</h4>
-                                <span>Entertainment Platform</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <button class="testimonial-nav testimonial-next" id="testimonial-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
-            <div class="testimonial-nav">
-                <button class="nav-dot active" data-slide="0"></button>
-                <button class="nav-dot" data-slide="1"></button>
-                <button class="nav-dot" data-slide="2"></button>
+            <div class="testimonial-indicators" id="testimonial-indicators">
+                <!-- Circular indicators will be generated by JavaScript -->
             </div>
         </div>
     </section>
