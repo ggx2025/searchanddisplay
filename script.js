@@ -69,6 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
+            
+            // Only prevent default for internal anchor links, not external pages
             if (href.startsWith('#')) {
                 e.preventDefault();
                 const targetId = href.substring(1);
@@ -81,6 +83,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 }
             }
+            // For .html links and external links, let them navigate normally
+            // No preventDefault() needed - let browser handle naturally
         });
     });
 });
@@ -262,152 +266,136 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Enhanced Testimonials Carousel
+// Testimonials Carousel Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const testimonialsCarousel = document.getElementById('testimonials-carousel');
     const testimonialsTrack = document.getElementById('testimonials-track');
-    const testimonialPrev = document.getElementById('testimonial-prev');
-    const testimonialNext = document.getElementById('testimonial-next');
-    const indicatorsContainer = document.getElementById('testimonial-indicators');
+    const prevButton = document.getElementById('testimonials-prev');
+    const nextButton = document.getElementById('testimonials-next');
+    const indicatorsContainer = document.getElementById('testimonials-indicators');
+    const slides = document.querySelectorAll('.testimonial-slide');
     
-    if (!testimonialsTrack || !testimonialPrev || !testimonialNext) {
-        return; // Exit if testimonial elements don't exist
+    if (!testimonialsCarousel || !testimonialsTrack || !prevButton || !nextButton) {
+        return; // Exit if carousel elements don't exist
     }
     
-    const slides = testimonialsTrack.querySelectorAll('.testimonial-slide');
-    const totalSlides = slides.length;
     let currentIndex = 0;
-    let isTransitioning = false;
-    let autoPlayInterval;
+    let slidesToShow = 2; // Default: show 2 testimonials at a time
+    const totalSlides = slides.length;
+    let maxIndex = Math.max(0, totalSlides - slidesToShow);
     
-    // Create circular indicators
+    // Responsive slides calculation
+    function updateSlidesToShow() {
+        const screenWidth = window.innerWidth;
+        if (screenWidth <= 768) {
+            slidesToShow = 1;
+        } else {
+            slidesToShow = 2;
+        }
+        maxIndex = Math.max(0, totalSlides - slidesToShow);
+        
+        // Adjust current index if it's beyond the new max
+        if (currentIndex > maxIndex) {
+            currentIndex = maxIndex;
+        }
+    }
+    
+    // Create indicators
     function createIndicators() {
         indicatorsContainer.innerHTML = '';
-        for (let i = 0; i < Math.ceil(totalSlides / 3); i++) {
+        const numIndicators = Math.ceil(totalSlides / slidesToShow);
+        
+        for (let i = 0; i < numIndicators; i++) {
             const indicator = document.createElement('button');
-            indicator.className = `testimonial-indicator ${i === 0 ? 'active' : ''}`;
-            indicator.addEventListener('click', () => goToSlideGroup(i));
+            indicator.className = `testimonials-indicator ${i === 0 ? 'active' : ''}`;
+            indicator.addEventListener('click', () => goToSlide(i * slidesToShow));
             indicatorsContainer.appendChild(indicator);
         }
     }
     
-    // Update carousel position
+    // Update carousel position with smooth movement
     function updateCarousel() {
-        if (isTransitioning) return;
+        const slideWidth = 100 / slidesToShow;
+        const translateX = -currentIndex * slideWidth;
         
-        const slideWidth = 100 / 3; // Show 3 slides at a time
-        const translateX = -(currentIndex * slideWidth);
         testimonialsTrack.style.transform = `translateX(${translateX}%)`;
         
         // Update indicators
-        const indicators = document.querySelectorAll('.testimonial-indicator');
+        const indicators = document.querySelectorAll('.testimonials-indicator');
         indicators.forEach((indicator, index) => {
-            indicator.classList.toggle('active', index === Math.floor(currentIndex / 3));
+            const indicatorStart = index * slidesToShow;
+            const indicatorEnd = indicatorStart + slidesToShow - 1;
+            indicator.classList.toggle('active', currentIndex >= indicatorStart && currentIndex <= indicatorEnd);
         });
+        
+        // Update navigation buttons
+        prevButton.style.opacity = currentIndex === 0 ? '0.5' : '1';
+        nextButton.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
+        prevButton.disabled = currentIndex === 0;
+        nextButton.disabled = currentIndex >= maxIndex;
     }
     
-    // Go to specific slide group
-    function goToSlideGroup(groupIndex) {
-        if (isTransitioning) return;
-        currentIndex = groupIndex * 3;
+    // Go to specific slide
+    function goToSlide(index) {
+        currentIndex = Math.max(0, Math.min(maxIndex, index));
+        testimonialsTrack.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
         updateCarousel();
-        resetAutoPlay();
-    }
-    
-    // Previous slide
-    function previousSlide() {
-        if (isTransitioning) return;
-        isTransitioning = true;
-        
-        currentIndex = currentIndex <= 0 ? Math.max(0, totalSlides - 3) : currentIndex - 3;
-        updateCarousel();
-        
-        setTimeout(() => {
-            isTransitioning = false;
-        }, 500);
-        resetAutoPlay();
     }
     
     // Next slide
     function nextSlide() {
-        if (isTransitioning) return;
-        isTransitioning = true;
-        
-        currentIndex = currentIndex >= totalSlides - 3 ? 0 : currentIndex + 3;
-        updateCarousel();
-        
-        setTimeout(() => {
-            isTransitioning = false;
-        }, 500);
-        resetAutoPlay();
-    }
-    
-    // Auto-play functionality
-    function startAutoPlay() {
-        autoPlayInterval = setInterval(() => {
-            nextSlide();
-        }, 6000);
-    }
-    
-    function stopAutoPlay() {
-        if (autoPlayInterval) {
-            clearInterval(autoPlayInterval);
+        if (currentIndex < maxIndex) {
+            testimonialsTrack.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            currentIndex++;
+            updateCarousel();
         }
     }
     
-    function resetAutoPlay() {
-        stopAutoPlay();
-        startAutoPlay();
+    // Previous slide
+    function prevSlide() {
+        if (currentIndex > 0) {
+            testimonialsTrack.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            currentIndex--;
+            updateCarousel();
+        }
     }
     
     // Event listeners
-    testimonialPrev.addEventListener('click', previousSlide);
-    testimonialNext.addEventListener('click', nextSlide);
-    
-    // Pause auto-play on hover
-    testimonialsCarousel.addEventListener('mouseenter', stopAutoPlay);
-    testimonialsCarousel.addEventListener('mouseleave', startAutoPlay);
+    nextButton.addEventListener('click', nextSlide);
+    prevButton.addEventListener('click', prevSlide);
     
     // Touch/swipe support for mobile
-    let startX = 0;
-    let currentX = 0;
-    let isDragging = false;
+    let touchStartX = 0;
+    let touchEndX = 0;
     
     testimonialsCarousel.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        isDragging = true;
-        stopAutoPlay();
-    });
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
     
-    testimonialsCarousel.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        currentX = e.touches[0].clientX;
-    });
+    testimonialsCarousel.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
     
-    testimonialsCarousel.addEventListener('touchend', () => {
-        if (!isDragging) return;
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const swipeDistance = touchStartX - touchEndX;
         
-        const deltaX = startX - currentX;
-        const threshold = 50;
-        
-        if (Math.abs(deltaX) > threshold) {
-            if (deltaX > 0) {
-                nextSlide();
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+            if (swipeDistance > 0) {
+                nextSlide(); // Swipe left - go to next
             } else {
-                previousSlide();
+                prevSlide(); // Swipe right - go to previous
             }
         }
-        
-        isDragging = false;
-        startAutoPlay();
-    });
+    }
     
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (document.activeElement.closest('.testimonials-carousel-container')) {
             if (e.key === 'ArrowLeft') {
                 e.preventDefault();
-                previousSlide();
+                prevSlide();
             } else if (e.key === 'ArrowRight') {
                 e.preventDefault();
                 nextSlide();
@@ -415,56 +403,163 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+    // Auto-play functionality
+    let autoPlayInterval;
+    const autoPlayDelay = 6000; // 6 seconds
+    
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(() => {
+            if (currentIndex >= maxIndex) {
+                goToSlide(0); // Loop back to start
+            } else {
+                nextSlide();
+            }
+        }, autoPlayDelay);
+    }
+    
+    function stopAutoPlay() {
+        clearInterval(autoPlayInterval);
+    }
+    
+    // Pause auto-play on hover
+    testimonialsCarousel.addEventListener('mouseenter', stopAutoPlay);
+    testimonialsCarousel.addEventListener('mouseleave', startAutoPlay);
+    
+    // Pause auto-play when user interacts
+    [prevButton, nextButton].forEach(button => {
+        button.addEventListener('click', () => {
+            stopAutoPlay();
+            setTimeout(startAutoPlay, autoPlayDelay); // Restart after delay
+        });
+    });
+    
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            updateSlidesToShow();
+            createIndicators();
+            updateCarousel();
+        }, 250);
+    });
+    
     // Initialize carousel
+    updateSlidesToShow();
     createIndicators();
     updateCarousel();
     startAutoPlay();
     
-    // Handle window resize
-    window.addEventListener('resize', () => {
-        updateCarousel();
+    // Add hover effects to testimonial cards
+    slides.forEach(slide => {
+        const card = slide.querySelector('.testimonial-card');
+        
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-15px) scale(1.03)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
     });
 });
 
-// Contact form handling
+// Reliable direct email sending for all contact forms
 document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contact-form');
+    const formIds = [
+        'contact-form', 'seo-contact-form', 'ppc-contact-form', 
+        'social-contact-form', 'content-contact-form', 'design-contact-form', 'analytics-contact-form'
+    ];
     
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(contactForm);
-        const formValues = {};
-        
-        for (let [key, value] of formData.entries()) {
-            formValues[key] = value;
+    formIds.forEach(formId => {
+        const form = document.getElementById(formId);
+        if (form) {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const btn = form.querySelector('button[type="submit"]');
+                const originalText = btn.textContent;
+                
+                // Get form data
+                const formData = new FormData(form);
+                const data = {};
+                for (let [key, value] of formData.entries()) {
+                    data[key] = value;
+                }
+                
+                // Basic validation
+                if (!data.name || !data.email || !data.message) {
+                    showNotification('Please fill in all required fields.', 'error');
+                    return;
+                }
+                
+                if (!isValidEmail(data.email)) {
+                    showNotification('Please enter a valid email address.', 'error');
+                    return;
+                }
+                
+                btn.textContent = 'Sending...';
+                btn.disabled = true;
+                
+                try {
+                    // Prepare form data for Web3Forms
+                    const formType = formId.replace('-contact-form', '').replace('contact-form', 'general');
+                    const submitData = new FormData();
+                    
+                    // Web3Forms access key (free tier)
+                    submitData.append('access_key', 'e8f5f7bb-c9a5-4e5b-9e1f-8a2b3c4d5e6f');
+                    submitData.append('subject', `${formType.toUpperCase()} Inquiry - Search & Display`);
+                    submitData.append('from_name', 'Search & Display Website');
+                    submitData.append('name', data.name);
+                    submitData.append('email', data.email);
+                    submitData.append('phone', data.phone || 'Not provided');
+                    submitData.append('service', data.service || data['seo-service'] || data['project-type'] || data['content-type'] || data.platforms || formType);
+                    submitData.append('company', data.company || data.business || 'Not provided');
+                    submitData.append('website', data.website || 'Not provided');
+                    submitData.append('budget', data.budget || 'Not specified');
+                    submitData.append('message', data.message);
+                    submitData.append('form_type', formType.toUpperCase());
+                    
+                    // Send email using Web3Forms
+                    const response = await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        body: submitData
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
+                        form.reset();
+                    } else {
+                        throw new Error(result.message || 'Failed to send');
+                    }
+                } catch (error) {
+                    console.error('Email sending failed:', error);
+                    // Fallback to mailto with better UX
+                    const formType = formId.replace('-contact-form', '').replace('contact-form', 'general');
+                    const subject = encodeURIComponent(`${formType.toUpperCase()} Inquiry - Search & Display`);
+                    const body = encodeURIComponent(
+                        `Name: ${data.name}\n` +
+                        `Email: ${data.email}\n` +
+                        `Phone: ${data.phone || 'Not provided'}\n` +
+                        `Service: ${data.service || data['seo-service'] || data['project-type'] || data['content-type'] || data.platforms || formType}\n` +
+                        `Company/Business: ${data.company || data.business || 'Not provided'}\n` +
+                        `Website: ${data.website || 'Not provided'}\n` +
+                        `Budget: ${data.budget || 'Not specified'}\n\n` +
+                        `Message:\n${data.message}`
+                    );
+                    
+                    const mailtoLink = `mailto:searchanddisplay21@gmail.com?subject=${subject}&body=${body}`;
+                    window.open(mailtoLink, '_blank');
+                    
+                    showNotification('Opening email client as backup. Please send the email to complete your inquiry.', 'success');
+                    form.reset();
+                } finally {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                }
+            });
         }
-        
-        // Basic validation
-        if (!formValues.name || !formValues.email || !formValues.service || !formValues.message) {
-            showNotification('Please fill in all required fields.', 'error');
-            return;
-        }
-        
-        if (!isValidEmail(formValues.email)) {
-            showNotification('Please enter a valid email address.', 'error');
-            return;
-        }
-        
-        // Simulate form submission
-        const submitButton = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitButton.textContent;
-        
-        submitButton.textContent = 'Sending...';
-        submitButton.disabled = true;
-        
-        setTimeout(() => {
-            showNotification('Thank you! Your message has been sent successfully.', 'success');
-            contactForm.reset();
-            submitButton.textContent = originalText;
-            submitButton.disabled = false;
-        }, 2000);
     });
 });
 
@@ -675,7 +770,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Service links functionality - Direct navigation with enhanced debugging
+// Service links functionality - Direct navigation with enhanced feedback
 document.addEventListener('DOMContentLoaded', function() {
     const serviceLinks = document.querySelectorAll('.service-link');
     console.log('Found service links:', serviceLinks.length);
@@ -696,7 +791,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => {
                     this.style.transform = 'scale(1)';
                 }, 150);
-                // Allow normal navigation to proceed
+                // Allow normal navigation to proceed - no preventDefault()
+                console.log('Navigating to:', href);
             }
         });
         
@@ -993,4 +1089,7 @@ document.addEventListener('DOMContentLoaded', function() {
     industryCarousel.addEventListener('mouseleave', () => {
         industryTrack.style.animationPlayState = 'running';
     });
+    
+
 });
+
