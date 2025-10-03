@@ -248,14 +248,106 @@
             transform: rotate(45deg);
         }
         @media (max-width: 768px) {
-            .pricing-hero h1 {
-                font-size: 2.5rem;
+            .pricing-hero {
+                padding: 60px 20px 40px;
             }
-            .pricing-card.featured {
-                transform: none;
+            .pricing-hero h1 {
+                font-size: 2rem;
+            }
+            .pricing-hero p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+            .service-selector {
+                gap: 0.5rem;
+                padding: 0 1rem;
+            }
+            .service-tab {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.8rem;
+                min-width: 120px;
+                text-align: center;
+            }
+            .pricing-section {
+                padding: 40px 20px;
             }
             .pricing-grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
+                margin-top: 1.5rem;
+            }
+            .pricing-card {
+                padding: 1.5rem;
+                margin: 0 10px;
+            }
+            .pricing-card.featured {
+                transform: none;
+                margin: 0 10px;
+            }
+            .pricing-badge {
+                padding: 0.3rem 1rem;
+                font-size: 0.7rem;
+            }
+            .pricing-header h3 {
+                font-size: 1.1rem;
+            }
+            .price-amount {
+                font-size: 1.8rem;
+            }
+            .pricing-features li {
+                font-size: 0.85rem;
+                padding: 0.4rem 0;
+            }
+            .pricing-cta {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.85rem;
+            }
+            .faq-section {
+                padding: 40px 20px;
+            }
+            .faq-question {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+            .faq-answer {
+                padding: 0 1rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            .pricing-hero {
+                padding: 50px 15px 30px;
+            }
+            .pricing-hero h1 {
+                font-size: 1.8rem;
+            }
+            .service-selector {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            .service-tab {
+                width: 100%;
+                max-width: 250px;
+            }
+            .pricing-section {
+                padding: 30px 15px;
+            }
+            .pricing-card {
+                margin: 0 5px;
+                padding: 1.25rem;
+            }
+            .pricing-toggle {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+            .pricing-toggle span {
+                font-size: 0.85rem;
             }
         }
         .service-selector {
@@ -361,7 +453,7 @@
                 <div class="toggle-container" id="pricing-toggle">
                     <div class="toggle-slider"></div>
                 </div>
-                <span>Yearly <span style="color: var(--accent-color);">(20% off)</span></span>
+                <span>Yearly <span style="color: var(--accent-color);">(40% off)</span></span>
             </div>
         </div>
     </section>
@@ -377,35 +469,35 @@
                 <div class="pricing-grid">
                     <div class="pricing-card">
                         <div class="pricing-header">
-                            <h3>Starter</h3>
+                            <h3>Starter Pack</h3>
                             <p>Perfect for small businesses starting with PPC advertising</p>
                         </div>
                         <div class="pricing-price">
-                            <span class="price-amount" data-monthly="$1,500" data-yearly="$1,200">$1,500</span>
+                            <span class="price-amount" data-monthly="$499" data-yearly="$299">$499</span>
                             <span class="price-period">/month</span>
                         </div>
                         <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i>Up to $10k monthly ad spend</li>
+                            <li><i class="fas fa-check"></i>Spend up to $5k per month</li>
                             <li><i class="fas fa-check"></i>Google Ads management</li>
                             <li><i class="fas fa-check"></i>Basic keyword research</li>
                             <li><i class="fas fa-check"></i>Ad copy creation & testing</li>
                             <li><i class="fas fa-check"></i>Monthly performance reports</li>
                             <li><i class="fas fa-check"></i>Email support</li>
                         </ul>
-                        <button class="btn btn-outline pricing-cta">Get Started</button>
+                        <button class="btn btn-outline pricing-cta">Choose Plan</button>
                     </div>
                     <div class="pricing-card featured">
                         <div class="pricing-badge">Most Popular</div>
                         <div class="pricing-header">
-                            <h3>Professional</h3>
+                            <h3>Professional Pack</h3>
                             <p>Ideal for growing businesses ready to scale their PPC efforts</p>
                         </div>
                         <div class="pricing-price">
-                            <span class="price-amount" data-monthly="$3,500" data-yearly="$2,800">$3,500</span>
+                            <span class="price-amount" data-monthly="$1,999" data-yearly="$1,199">$1,999</span>
                             <span class="price-period">/month</span>
                         </div>
                         <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i>Up to $25k monthly ad spend</li>
+                            <li><i class="fas fa-check"></i>Spend up to $20k per month</li>
                             <li><i class="fas fa-check"></i>Multi-platform management (Google, Meta, LinkedIn)</li>
                             <li><i class="fas fa-check"></i>Advanced targeting & audiences</li>
                             <li><i class="fas fa-check"></i>Conversion tracking & optimization</li>
@@ -417,11 +509,11 @@
                     </div>
                     <div class="pricing-card">
                         <div class="pricing-header">
-                            <h3>Enterprise</h3>
+                            <h3>Enterprise Pack</h3>
                             <p>Comprehensive PPC solution for large-scale campaigns</p>
                         </div>
                         <div class="pricing-price">
-                            <span class="price-amount" data-monthly="15% of ad spend" data-yearly="12% of ad spend">15% of ad spend</span>
+                            <span class="price-amount" data-monthly="Talk to our business team" data-yearly="Talk to our business team">Talk to our business team</span>
                             <span class="price-period"></span>
                         </div>
                         <ul class="pricing-features">
@@ -451,7 +543,7 @@
                             <p>Essential SEO foundation for small businesses</p>
                         </div>
                         <div class="pricing-price">
-                            <span class="price-amount" data-monthly="$1,200" data-yearly="$960">$1,200</span>
+                            <span class="price-amount" data-monthly="$299" data-yearly="$179">$299</span>
                             <span class="price-period">/month</span>
                         </div>
                         <ul class="pricing-features">
@@ -462,7 +554,7 @@
                             <li><i class="fas fa-check"></i>Monthly progress reports</li>
                             <li><i class="fas fa-check"></i>Google Analytics setup</li>
                         </ul>
-                        <button class="btn btn-outline pricing-cta">Get Started</button>
+                        <button class="btn btn-outline pricing-cta">Choose Plan</button>
                     </div>
                     <div class="pricing-card featured">
                         <div class="pricing-badge">Most Popular</div>
@@ -471,7 +563,7 @@
                             <p>Advanced SEO strategy for competitive markets</p>
                         </div>
                         <div class="pricing-price">
-                            <span class="price-amount" data-monthly="$2,800" data-yearly="$2,240">$2,800</span>
+                            <span class="price-amount" data-monthly="$499" data-yearly="$299">$499</span>
                             <span class="price-period">/month</span>
                         </div>
                         <ul class="pricing-features">
@@ -491,8 +583,8 @@
                             <p>Complete SEO dominance for large organizations</p>
                         </div>
                         <div class="pricing-price">
-                            <span class="price-amount" data-monthly="$5,500" data-yearly="$4,400">$5,500</span>
-                            <span class="price-period">/month</span>
+                            <span class="price-amount" data-monthly="Talk to our Business Team" data-yearly="Talk to our Business Team">Talk to our Business Team</span>
+                            <span class="price-period"></span>
                         </div>
                         <ul class="pricing-features">
                             <li><i class="fas fa-check"></i>Unlimited target keywords</li>
@@ -521,18 +613,18 @@
                             <p>Basic social media presence for small businesses</p>
                         </div>
                         <div class="pricing-price">
-                            <span class="price-amount" data-monthly="$1,800" data-yearly="$1,440">$1,800</span>
+                            <span class="price-amount" data-monthly="$399" data-yearly="$239">$399</span>
                             <span class="price-period">/month</span>
                         </div>
                         <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i>20 posts per month</li>
                             <li><i class="fas fa-check"></i>2 social media platforms</li>
-                            <li><i class="fas fa-check"></i>12 posts per month</li>
                             <li><i class="fas fa-check"></i>Basic content creation</li>
                             <li><i class="fas fa-check"></i>Community management</li>
                             <li><i class="fas fa-check"></i>Monthly analytics report</li>
                             <li><i class="fas fa-check"></i>Basic ad campaigns ($500 ad spend)</li>
                         </ul>
-                        <button class="btn btn-outline pricing-cta">Get Started</button>
+                        <button class="btn btn-outline pricing-cta">Choose Plan</button>
                     </div>
                     <div class="pricing-card featured">
                         <div class="pricing-badge">Most Popular</div>
@@ -541,12 +633,12 @@
                             <p>Comprehensive social media strategy for growing brands</p>
                         </div>
                         <div class="pricing-price">
-                            <span class="price-amount" data-monthly="$3,200" data-yearly="$2,560">$3,200</span>
+                            <span class="price-amount" data-monthly="$699" data-yearly="$419">$699</span>
                             <span class="price-period">/month</span>
                         </div>
                         <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i>40 posts per month</li>
                             <li><i class="fas fa-check"></i>4 social media platforms</li>
-                            <li><i class="fas fa-check"></i>20 posts per month</li>
                             <li><i class="fas fa-check"></i>Professional content creation</li>
                             <li><i class="fas fa-check"></i>Advanced community management</li>
                             <li><i class="fas fa-check"></i>Influencer collaboration</li>
@@ -561,8 +653,8 @@
                             <p>Full-scale social media dominance and brand building</p>
                         </div>
                         <div class="pricing-price">
-                            <span class="price-amount" data-monthly="$6,500" data-yearly="$5,200">$6,500</span>
-                            <span class="price-period">/month</span>
+                            <span class="price-amount" data-monthly="Talk to our Business Team" data-yearly="Talk to our Business Team">Talk to our Business Team</span>
+                            <span class="price-period"></span>
                         </div>
                         <ul class="pricing-features">
                             <li><i class="fas fa-check"></i>All major platforms + emerging</li>
@@ -587,11 +679,11 @@
                 <div class="pricing-grid">
                     <div class="pricing-card">
                         <div class="pricing-header">
-                            <h3>Basic Website</h3>
+                            <h3>Basic</h3>
                             <p>Professional website for small businesses and startups</p>
                         </div>
                         <div class="pricing-price">
-                            <span class="price-amount" data-monthly="$2,500" data-yearly="$2,000">$2,500</span>
+                            <span class="price-amount" data-monthly="$499" data-yearly="$299">$499</span>
                             <span class="price-period">one-time</span>
                         </div>
                         <ul class="pricing-features">
@@ -602,16 +694,16 @@
                             <li><i class="fas fa-check"></i>Google Analytics integration</li>
                             <li><i class="fas fa-check"></i>1 month support</li>
                         </ul>
-                        <button class="btn btn-outline pricing-cta">Get Started</button>
+                        <button class="btn btn-outline pricing-cta">Choose Plan</button>
                     </div>
                     <div class="pricing-card featured">
                         <div class="pricing-badge">Most Popular</div>
                         <div class="pricing-header">
-                            <h3>Professional Website</h3>
+                            <h3>Professional</h3>
                             <p>Advanced website with enhanced features and functionality</p>
                         </div>
                         <div class="pricing-price">
-                            <span class="price-amount" data-monthly="$5,500" data-yearly="$4,400">$5,500</span>
+                            <span class="price-amount" data-monthly="$999" data-yearly="$599">$999</span>
                             <span class="price-period">one-time</span>
                         </div>
                         <ul class="pricing-features">
@@ -627,12 +719,12 @@
                     </div>
                     <div class="pricing-card">
                         <div class="pricing-header">
-                            <h3>Enterprise Website</h3>
+                            <h3>Enterprise</h3>
                             <p>Complete web solution with advanced integrations</p>
                         </div>
                         <div class="pricing-price">
-                            <span class="price-amount" data-monthly="$12,000" data-yearly="$9,600">$12,000</span>
-                            <span class="price-period">one-time</span>
+                            <span class="price-amount" data-monthly="Talk to our Business Team" data-yearly="Talk to our Business Team">Talk to our Business Team</span>
+                            <span class="price-period"></span>
                         </div>
                         <ul class="pricing-features">
                             <li><i class="fas fa-check"></i>Unlimited pages</li>
@@ -657,11 +749,11 @@
                 <div class="pricing-grid">
                     <div class="pricing-card">
                         <div class="pricing-header">
-                            <h3>Content Essentials</h3>
+                            <h3>Essential</h3>
                             <p>Basic content package for consistent brand communication</p>
                         </div>
                         <div class="pricing-price">
-                            <span class="price-amount" data-monthly="$1,500" data-yearly="$1,200">$1,500</span>
+                            <span class="price-amount" data-monthly="$399" data-yearly="$239">$399</span>
                             <span class="price-period">/month</span>
                         </div>
                         <ul class="pricing-features">
@@ -672,16 +764,16 @@
                             <li><i class="fas fa-check"></i>Basic graphics design</li>
                             <li><i class="fas fa-check"></i>Email newsletter template</li>
                         </ul>
-                        <button class="btn btn-outline pricing-cta">Get Started</button>
+                        <button class="btn btn-outline pricing-cta">Choose Plan</button>
                     </div>
                     <div class="pricing-card featured">
                         <div class="pricing-badge">Most Popular</div>
                         <div class="pricing-header">
-                            <h3>Content Growth</h3>
+                            <h3>Growth</h3>
                             <p>Comprehensive content strategy for audience engagement</p>
                         </div>
                         <div class="pricing-price">
-                            <span class="price-amount" data-monthly="$3,000" data-yearly="$2,400">$3,000</span>
+                            <span class="price-amount" data-monthly="$749" data-yearly="$449">$749</span>
                             <span class="price-period">/month</span>
                         </div>
                         <ul class="pricing-features">
@@ -697,12 +789,12 @@
                     </div>
                     <div class="pricing-card">
                         <div class="pricing-header">
-                            <h3>Content Enterprise</h3>
+                            <h3>Enterprise</h3>
                             <p>Full-scale content marketing with premium production</p>
                         </div>
                         <div class="pricing-price">
-                            <span class="price-amount" data-monthly="$6,000" data-yearly="$4,800">$6,000</span>
-                            <span class="price-period">/month</span>
+                            <span class="price-amount" data-monthly="Talk to our Business Team" data-yearly="Talk to our Business Team">Talk to our Business Team</span>
+                            <span class="price-period"></span>
                         </div>
                         <ul class="pricing-features">
                             <li><i class="fas fa-check"></i>12+ blog posts per month</li>
@@ -895,10 +987,60 @@
             const ctaButtons = document.querySelectorAll('.pricing-cta');
             ctaButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    if (this.textContent === 'Contact Sales') {
+                    const buttonText = this.textContent.trim();
+                    console.log('Button clicked:', buttonText); // Debug log
+                    
+                    if (buttonText === 'Contact Sales') {
                         window.location.href = 'index.html#contact';
                     } else {
-                        window.location.href = 'index.html#contact';
+                        // Get the plan details
+                        const card = this.closest('.pricing-card');
+                        const planName = card.querySelector('h3').textContent;
+                        const priceElement = card.querySelector('.price-amount');
+                        
+                        console.log('Plan:', planName); // Debug log
+                        console.log('Price element:', priceElement); // Debug log
+                        
+                        // Get the monthly price for base calculation
+                        const monthlyPrice = priceElement.getAttribute('data-monthly');
+                        console.log('Monthly price attr:', monthlyPrice); // Debug log
+                        
+                        // Clean the price (remove $ and ,)
+                        let price = monthlyPrice ? monthlyPrice.replace('$', '').replace(',', '') : '0';
+                        console.log('Cleaned price:', price); // Debug log
+                        
+                        // If price is not a number (like "Talk to our business team"), skip checkout
+                        if (isNaN(parseInt(price)) || parseInt(price) === 0) {
+                            console.log('Invalid price, redirecting to contact'); // Debug log
+                            window.location.href = 'index.html#contact';
+                            return;
+                        }
+                        
+                        // Get the current service
+                        const activeTab = document.querySelector('.service-tab.active');
+                        let service = 'Digital Marketing';
+                        
+                        if (activeTab) {
+                            const serviceCode = activeTab.getAttribute('data-service');
+                            // Map service codes to proper names
+                            const serviceMap = {
+                                'ppc': 'PPC Advertising',
+                                'seo': 'SEO Optimization',
+                                'social': 'Social Media Marketing',
+                                'web': 'Web Design & Development',
+                                'content': 'Content Creation'
+                            };
+                            service = serviceMap[serviceCode] || 'Digital Marketing';
+                        }
+                        
+                        console.log('Service:', service); // Debug log
+                        console.log('Billing mode:', isYearly ? 'yearly' : 'monthly'); // Debug log
+                        
+                        // Redirect to checkout with proper parameters
+                        const checkoutUrl = `checkout.html?plan=${encodeURIComponent(planName)}&service=${encodeURIComponent(service)}&price=${price}&billing=${isYearly ? 'yearly' : 'monthly'}`;
+                        console.log('Redirecting to:', checkoutUrl); // Debug log
+                        
+                        window.location.href = checkoutUrl;
                     }
                 });
             });

@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Search & Display</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <style>
+        .checkout-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 2rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .checkout-header {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .checkout-header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .checkout-header p {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+        
+        .order-summary {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+        }
+        
+        .order-summary h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .selected-plan {
+            margin-bottom: 1.5rem;
+        }
+        
+        .plan-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .plan-name {
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .plan-service {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        .plan-price {
+            font-weight: 700;
+            color: #0ea5e9;
+            font-size: 1.25rem;
+        }
+        
+        .billing-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 12px;
+        }
+        
+        .billing-toggle span {
+            color: #64748b;
+            font-weight: 500;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 26px;
+            background: #e2e8f0;
+            border-radius: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-switch.active {
+            background: #0ea5e9;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 22px;
+            height: 22px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .toggle-switch.active .toggle-slider {
+            transform: translateX(24px);
+        }
+        
+        .price-breakdown {
+            margin: 1.5rem 0;
+            padding: 1rem 0;
+            border-top: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .discount-row {
+            color: #10b981;
+        }
+        
+        .total-row {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1e293b;
+            padding-top: 0.5rem;
+            border-top: 1px solid #f1f5f9;
+        }
+        
+        .payment-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        .payment-form h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-section {
+            margin-bottom: 2rem;
+        }
+        
+        .form-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #374151;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #0ea5e9;
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .payment-method {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .payment-method:hover {
+            border-color: #cbd5e1;
+        }
+        
+        .payment-method.active {
+            border-color: #0ea5e9;
+            background: #f0f9ff;
+        }
+        
+        .payment-method i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #64748b;
+        }
+        
+        .payment-method.active i {
+            color: #0ea5e9;
+        }
+        
+        .payment-method span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #64748b;
+        }
+        
+        .payment-method.active span {
+            color: #0ea5e9;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: #0ea5e9;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .checkout-btn:hover {
+            background: #0284c7;
+            transform: translateY(-1px);
+        }
+        
+        .checkout-btn:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .security-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f0f9ff;
+            border-radius: 8px;
+            color: #0369a1;
+            font-size: 0.9rem;
+        }
+        
+        .back-to-pricing {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #64748b;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .back-to-pricing:hover {
+            color: #0ea5e9;
+        }
+        
+        @media (max-width: 768px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 100px 1rem 2rem;
+            }
+            
+            .order-summary {
+                position: static;
+                order: 2;
+            }
+            
+            .payment-form {
+                order: 1;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-methods {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .checkout-header h1 {
+                font-size: 2rem;
+            }
+            
+            .checkout-header p {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .checkout-container {
+                padding: 90px 0.5rem 1rem;
+            }
+            
+            .checkout-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .order-summary,
+            .payment-form {
+                padding: 1.5rem;
+                margin: 0 0.5rem;
+            }
+            
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group input,
+            .form-group select {
+                padding: 0.6rem;
+            }
+            
+            .billing-toggle {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <span class="logo-icon"><i class="fas fa-chart-line"></i></span>
+                    <span class="logo-text">Search & Display</span>
+                </a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a href="index.html#services" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="seo.html">SEO Optimization</a>
+                        <a href="ppc.html">PPC Advertising</a>
+                        <a href="social-media.html">Social Media Marketing</a>
+                        <a href="content-marketing.html">Content Marketing</a>
+                        <a href="web-design.html">Web Design</a>
+                        <a href="analytics.html">Analytics & Reporting</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
+                <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="checkout-container">
+        <div class="checkout-header">
+            <h1>Complete Your Purchase</h1>
+            <p>Secure checkout powered by Razorpay - Your payment information is safe and encrypted</p>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="order-summary">
+            <a href="index.html#contact" class="back-to-pricing">
+                <i class="fas fa-arrow-left"></i> Back to Contact
+            </a>
+            
+            <h2>Order Summary</h2>
+            
+            <div class="selected-plan">
+                <div class="plan-info">
+                    <div>
+                        <div class="plan-name" id="selected-plan-name">Loading...</div>
+                        <div class="plan-service" id="selected-service">Loading...</div>
+                    </div>
+                    <div class="plan-price" id="selected-price">Loading...</div>
+                </div>
+            </div>
+            
+            <div class="billing-toggle">
+                <span>Monthly</span>
+                <div class="toggle-switch" id="billing-toggle">
+                    <div class="toggle-slider"></div>
+                </div>
+                <span>Yearly (40% off)</span>
+            </div>
+            
+            <div class="price-breakdown">
+                <div class="price-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">Loading...</span>
+                </div>
+                <div class="price-row discount-row" id="discount-row" style="display: none;">
+                    <span>Yearly Discount (40%):</span>
+                    <span id="discount-amount">Loading...</span>
+                </div>
+                <div class="price-row">
+                    <span>Tax (18%):</span>
+                    <span id="tax-amount">Loading...</span>
+                </div>
+                <div class="price-row total-row">
+                    <span>Total:</span>
+                    <span id="total-amount">Loading...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Form -->
+        <div class="payment-form">
+            <h2>Payment Information</h2>
+            
+            <!-- Customer Information -->
+            <div class="form-section">
+                <h3>Contact Information</h3>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+            </div>
+
+            <!-- Billing Address -->
+            <div class="form-section">
+                <h3>Billing Address</h3>
+                <div class="form-group">
+                    <label for="address">Address *</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City *</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State *</label>
+                        <input type="text" id="state" name="state" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pincode">PIN Code *</label>
+                        <input type="text" id="pincode" name="pincode" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country *</label>
+                        <select id="country" name="country" required>
+                            <option value="IN">India</option>
+                            <option value="US">United States</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="CA">Canada</option>
+                            <option value="AU">Australia</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="form-section">
+                <h3>Payment Method</h3>
+                <div class="payment-methods">
+                    <div class="payment-method active" data-method="card">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Card</span>
+                    </div>
+                    <div class="payment-method" data-method="netbanking">
+                        <i class="fas fa-university"></i>
+                        <span>Net Banking</span>
+                    </div>
+                    <div class="payment-method" data-method="upi">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>UPI</span>
+                    </div>
+                    <div class="payment-method" data-method="wallet">
+                        <i class="fas fa-wallet"></i>
+                        <span>Wallet</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="checkout-btn" id="checkout-btn">
+                <i class="fas fa-lock"></i>
+                Proceed to Payment
+            </button>
+
+            <div class="security-info">
+                <i class="fas fa-shield-alt"></i>
+                <span>Your payment is secured with 256-bit SSL encryption</span>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <span class="logo-icon"><i class="fas fa-chart-line"></i></span>
+                        <span class="logo-text">Search & Display</span>
+                    </div>
+                    <p class="footer-description">
+                        Proven digital marketing experts dedicated to scaling your business. Our data-driven strategies and creative campaigns deliver exceptional results across all digital channels. Let us transform your marketing performance.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="seo.html">SEO Optimization</a></li>
+                        <li><a href="ppc.html">PPC Advertising</a></li>
+                        <li><a href="social-media.html">Social Media Marketing</a></li>
+                        <li><a href="content-marketing.html">Content Marketing</a></li>
+                        <li><a href="web-design.html">Web Design</a></li>
+                        <li><a href="analytics.html">Analytics & Reporting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +91 8618847716</p>
+                        <p><i class="fas fa-envelope"></i> searchanddisplay21@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Sector-2, HSR Layout, Bengaluru (India) - 560102</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Search & Display. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const plan = urlParams.get('plan');
+            const service = urlParams.get('service');
+            const price = urlParams.get('price');
+            const billing = urlParams.get('billing') || 'monthly';
+            
+            console.log('Checkout URL Params:', { plan, service, price, billing }); // Debug log
+            
+            // Redirect to contact page if parameters are missing
+            if (!plan || !service || !price) {
+                console.log('Missing parameters, redirecting to contact page');
+                window.location.href = 'index.html#contact';
+                return;
+            }
+            
+            // Validate price is a number
+            const priceNum = parseFloat(price);
+            if (isNaN(priceNum)) {
+                console.log('Invalid price, redirecting to contact page');
+                window.location.href = 'index.html#contact';
+                return;
+            }
+            
+            // Update order summary
+            document.getElementById('selected-plan-name').textContent = plan;
+            document.getElementById('selected-service').textContent = service;
+            document.getElementById('selected-price').textContent = '$' + parseInt(price).toLocaleString();
+            
+            let isYearly = billing === 'yearly';
+            let basePrice = parseInt(price);
+            
+            // Validate price is a valid number
+            if (isNaN(basePrice) || basePrice <= 0) {
+                console.error('Invalid price parameter, redirecting to contact page');
+                window.location.href = 'index.html#contact';
+                return;
+            }
+            
+            console.log('Initialized with:', { plan, service, basePrice, isYearly }); // Debug log
+            
+            // Set initial toggle state
+            const billingToggle = document.getElementById('billing-toggle');
+            if (isYearly) {
+                billingToggle.classList.add('active');
+            }
+            
+            function updatePricing() {
+                const subtotal = basePrice;
+                let finalPrice = subtotal;
+                let discountAmount = 0;
+                
+                if (isYearly) {
+                    discountAmount = Math.round(subtotal * 0.4);
+                    finalPrice = subtotal - discountAmount;
+                }
+                
+                const tax = Math.round(finalPrice * 0.18);
+                const total = finalPrice + tax;
+                
+                console.log('Price calculation:', { subtotal, discountAmount, finalPrice, tax, total, isYearly }); // Debug log
+                
+                document.getElementById('subtotal').textContent = '$' + subtotal.toLocaleString();
+                document.getElementById('tax-amount').textContent = '$' + tax.toLocaleString();
+                document.getElementById('total-amount').textContent = '$' + total.toLocaleString();
+                
+                const discountRow = document.getElementById('discount-row');
+                if (isYearly) {
+                    discountRow.style.display = 'flex';
+                    document.getElementById('discount-amount').textContent = '-$' + discountAmount.toLocaleString();
+                } else {
+                    discountRow.style.display = 'none';
+                }
+            }
+            
+            // Billing toggle
+            billingToggle.addEventListener('click', function() {
+                isYearly = !isYearly;
+                this.classList.toggle('active');
+                updatePricing();
+            });
+            
+            // Payment method selection
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    paymentMethods.forEach(m => m.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Checkout button
+            const checkoutBtn = document.getElementById('checkout-btn');
+            checkoutBtn.addEventListener('click', function() {
+                const formData = {
+                    email: document.getElementById('email').value,
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    phone: document.getElementById('phone').value,
+                    address: document.getElementById('address').value,
+                    city: document.getElementById('city').value,
+                    state: document.getElementById('state').value,
+                    pincode: document.getElementById('pincode').value,
+                    country: document.getElementById('country').value
+                };
+                
+                // Validate form
+                if (!formData.email || !formData.firstName || !formData.lastName || !formData.phone) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+                
+                // Calculate final amount for Razorpay
+                let finalAmountForPayment = basePrice;
+                if (isYearly) {
+                    finalAmountForPayment = finalAmountForPayment - Math.round(finalAmountForPayment * 0.4);
+                }
+                const taxAmount = Math.round(finalAmountForPayment * 0.18);
+                finalAmountForPayment = finalAmountForPayment + taxAmount;
+                
+                // Razorpay integration
+                const options = {
+                    key: 'rzp_test_your_key_here', // Replace with your Razorpay key
+                    amount: finalAmountForPayment * 100, // Amount in paise
+                    currency: 'INR',
+                    name: 'Search & Display',
+                    description: plan + ' - ' + service,
+                    image: '/path/to/your/logo.png',
+                    order_id: '', // This should be generated from your backend
+                    handler: function(response) {
+                        // Payment successful
+                        alert('Payment successful! Payment ID: ' + response.razorpay_payment_id);
+                        // Redirect to success page or handle success
+                        window.location.href = 'payment-success.html?payment_id=' + response.razorpay_payment_id;
+                    },
+                    prefill: {
+                        name: formData.firstName + ' ' + formData.lastName,
+                        email: formData.email,
+                        contact: formData.phone
+                    },
+                    notes: {
+                        plan: plan,
+                        service: service,
+                        billing: isYearly ? 'yearly' : 'monthly'
+                    },
+                    theme: {
+                        color: '#0ea5e9'
+                    },
+                    modal: {
+                        ondismiss: function() {
+                            console.log('Payment modal closed');
+                        }
+                    }
+                };
+                
+                const razorpay = new Razorpay(options);
+                razorpay.open();
+            });
+            
+            // Initialize pricing
+            updatePricing();
+            
+            // Handle "Back to Plans" button
+            document.getElementById('backToPlans').addEventListener('click', function() {
+                // Redirect to contact section instead of pricing page
+                window.location.href = 'index.html#contact';
+            });
+
+            // Handle form submission
+            document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Form validation
+                if (!validateForm()) {
+                    return;
+                }
+                
+                // Show loading state
+                const submitBtn = document.getElementById('submitBtn');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                submitBtn.disabled = true;
+                
+                // Simulate payment processing
+                setTimeout(function() {
+                    // On success, redirect to success page
+                    window.location.href = 'payment-success.html';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

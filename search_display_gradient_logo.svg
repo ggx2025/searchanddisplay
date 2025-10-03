@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 350" width="450" height="350">
+  <defs>
+    <!-- Define the gradient for tiles -->
+    <linearGradient id="tileGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#B857C9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF6B35;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Background gradient -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFF0F8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F8E8FF;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Tile shadow filter -->
+    <filter id="tileShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="450" height="350" fill="url(#bgGradient)"/>
+
+  <!-- SEARCH tiles -->
+  <g id="search-row">
+    <!-- S tile -->
+    <rect x="40" y="80" width="45" height="45" fill="url(#tileGradient)" stroke="#9B4CB8" stroke-width="2" rx="5" filter="url(#tileShadow)"/>
+    <text x="62.5" y="109" font-family="Arial Black, Arial" font-size="22" font-weight="bold" text-anchor="middle" fill="white">S</text>
+    <text x="77" y="119" font-family="Arial" font-size="9" fill="white">1</text>
+
+    <!-- E tile -->
+    <rect x="95" y="80" width="45" height="45" fill="url(#tileGradient)" stroke="#9B4CB8" stroke-width="2" rx="5" filter="url(#tileShadow)"/>
+    <text x="117.5" y="109" font-family="Arial Black, Arial" font-size="22" font-weight="bold" text-anchor="middle" fill="white">E</text>
+    <text x="132" y="119" font-family="Arial" font-size="9" fill="white">1</text>
+
+    <!-- A tile -->
+    <rect x="150" y="80" width="45" height="45" fill="url(#tileGradient)" stroke="#9B4CB8" stroke-width="2" rx="5" filter="url(#tileShadow)"/>
+    <text x="172.5" y="109" font-family="Arial Black, Arial" font-size="22" font-weight="bold" text-anchor="middle" fill="white">A</text>
+    <text x="187" y="119" font-family="Arial" font-size="9" fill="white">1</text>
+
+    <!-- R tile -->
+    <rect x="205" y="80" width="45" height="45" fill="url(#tileGradient)" stroke="#9B4CB8" stroke-width="2" rx="5" filter="url(#tileShadow)"/>
+    <text x="227.5" y="109" font-family="Arial Black, Arial" font-size="22" font-weight="bold" text-anchor="middle" fill="white">R</text>
+    <text x="242" y="119" font-family="Arial" font-size="9" fill="white">3</text>
+
+    <!-- C tile -->
+    <rect x="260" y="80" width="45" height="45" fill="url(#tileGradient)" stroke="#9B4CB8" stroke-width="2" rx="5" filter="url(#tileShadow)"/>
+    <text x="282.5" y="109" font-family="Arial Black, Arial" font-size="22" font-weight="bold" text-anchor="middle" fill="white">C</text>
+    <text x="297" y="119" font-family="Arial" font-size="9" fill="white">3</text>
+
+    <!-- H tile -->
+    <rect x="315" y="80" width="45" height="45" fill="url(#tileGradient)" stroke="#9B4CB8" stroke-width="2" rx="5" filter="url(#tileShadow)"/>
+    <text x="337.5" y="109" font-family="Arial Black, Arial" font-size="22" font-weight="bold" text-anchor="middle" fill="white">H</text>
+    <text x="352" y="119" font-family="Arial" font-size="9" fill="white">4</text>
+  </g>
+
+  <!-- AND tiles -->
+  <g id="and-row">
+    <!-- A tile -->
+    <rect x="150" y="140" width="45" height="45" fill="url(#tileGradient)" stroke="#9B4CB8" stroke-width="2" rx="5" filter="url(#tileShadow)"/>
+    <text x="172.5" y="169" font-family="Arial Black, Arial" font-size="22" font-weight="bold" text-anchor="middle" fill="white">A</text>
+    <text x="187" y="179" font-family="Arial" font-size="9" fill="white">2</text>
+
+    <!-- N tile -->
+    <rect x="205" y="140" width="45" height="45" fill="url(#tileGradient)" stroke="#9B4CB8" stroke-width="2" rx="5" filter="url(#tileShadow)"/>
+    <text x="227.5" y="169" font-family="Arial Black, Arial" font-size="22" font-weight="bold" text-anchor="middle" fill="white">N</text>
+    <text x="242" y="179" font-family="Arial" font-size="9" fill="white">1</text>
+
+    <!-- D tile -->
+    <rect x="260" y="140" width="45" height="45" fill="url(#tileGradient)" stroke="#9B4CB8" stroke-width="2" rx="5" filter="url(#tileShadow)"/>
+    <text x="282.5" y="169" font-family="Arial Black, Arial" font-size="22" font-weight="bold" text-anchor="middle" fill="white">D</text>
+    <text x="297" y="179" font-family="Arial" font-size="9" fill="white">5</text>
+  </g>
+
+  <!-- DISPLAY tiles -->
+  <g id="display-row">
+    <!-- D tile -->
+    <rect x="40" y="200" width="45" height="45" fill="url(#tileGradient)" stroke="#9B4CB8" stroke-width="2" rx="5" filter="url(#tileShadow)"/>
+    <text x="62.5" y="229" font-family="Arial Black, Arial" font-size="22" font-weight="bold" text-anchor="middle" fill="white">D</text>
+    <text x="77" y="239" font-family="Arial" font-size="9" fill="white">2</text>
+
+    <!-- I tile -->
+    <rect x="95" y="200" width="45" height="45" fill="url(#tileGradient)" stroke="#9B4CB8" stroke-width="2" rx="5" filter="url(#tileShadow)"/>
+    <text x="117.5" y="229" font-family="Arial Black, Arial" font-size="22" font-weight="bold" text-anchor="middle" fill="white">I</text>
+    <text x="132" y="239" font-family="Arial" font-size="9" fill="white">1</text>
+
+    <!-- S tile -->
+    <rect x="150" y="200" width="45" height="45" fill="url(#tileGradient)" stroke="#9B4CB8" stroke-width="2" rx="5" filter="url(#tileShadow)"/>
+    <text x="172.5" y="229" font-family="Arial Black, Arial" font-size="22" font-weight="bold" text-anchor="middle" fill="white">S</text>
+    <text x="187" y="239" font-family="Arial" font-size="9" fill="white">3</text>
+
+    <!-- P tile -->
+    <rect x="205" y="200" width="45" height="45" fill="url(#tileGradient)" stroke="#9B4CB8" stroke-width="2" rx="5" filter="url(#tileShadow)"/>
+    <text x="227.5" y="229" font-family="Arial Black, Arial" font-size="22" font-weight="bold" text-anchor="middle" fill="white">P</text>
+    <text x="242" y="239" font-family="Arial" font-size="9" fill="white">5</text>
+
+    <!-- L tile -->
+    <rect x="260" y="200" width="45" height="45" fill="url(#tileGradient)" stroke="#9B4CB8" stroke-width="2" rx="5" filter="url(#tileShadow)"/>
+    <text x="282.5" y="229" font-family="Arial Black, Arial" font-size="22" font-weight="bold" text-anchor="middle" fill="white">L</text>
+    <text x="297" y="239" font-family="Arial" font-size="9" fill="white">2</text>
+
+    <!-- A tile -->
+    <rect x="315" y="200" width="45" height="45" fill="url(#tileGradient)" stroke="#9B4CB8" stroke-width="2" rx="5" filter="url(#tileShadow)"/>
+    <text x="337.5" y="229" font-family="Arial Black, Arial" font-size="22" font-weight="bold" text-anchor="middle" fill="white">A</text>
+    <text x="352" y="239" font-family="Arial" font-size="9" fill="white">4</text>
+
+    <!-- Y tile -->
+    <rect x="370" y="200" width="45" height="45" fill="url(#tileGradient)" stroke="#9B4CB8" stroke-width="2" rx="5" filter="url(#tileShadow)"/>
+    <text x="392.5" y="229" font-family="Arial Black, Arial" font-size="22" font-weight="bold" text-anchor="middle" fill="white">Y</text>
+    <text x="407" y="239" font-family="Arial" font-size="9" fill="white">4</text>
+  </g>
+</svg>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Test - Debug Console</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .debug { background: #f0f0f0; padding: 10px; margin: 10px 0; border-radius: 5px; }
+        button { padding: 10px 20px; margin: 5px; background: #0ea5e9; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #0284c7; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pricing Test Page</h1>
+        <div class="controls">
+            <a href="test-all-pricing.html">Open All Pricing Test Page</a> | 
+            <a href="index.html">Back to Home</a>
+        </div>
+        
+        <div class="debug">
+            <h3>Quick Links for Testing</h3>
+            <a href="checkout.html?plan=Starter%20Pack&service=PPC%20Advertising&price=499&billing=monthly" target="_blank">Test Starter Checkout</a> | 
+            <a href="checkout.html?plan=Professional%20Pack&service=PPC%20Advertising&price=1999&billing=yearly" target="_blank">Test Professional Yearly</a>
+        </div>
+        
+        <div id="results" class="debug">
+            <h3>Results:</h3>
+            <div id="output"></div>
+        </div>
+
+        <script>
+            function log(message) {
+                const output = document.getElementById('output');
+                output.innerHTML += '<p>' + message + '</p>';
+            }
+
+            function testPPCStarter() {
+                log('Testing PPC Starter Package...');
+                
+                // Test URL generation
+                const plan = 'Starter Pack';
+                const service = 'PPC Advertising';
+                const price = '499';
+                const billing = 'monthly';
+                
+                const url = `checkout.html?plan=${encodeURIComponent(plan)}&service=${encodeURIComponent(service)}&price=${price}&billing=${billing}`;
+                log('Generated URL: ' + url);
+                
+                // Test if this would work
+                setTimeout(() => {
+                    window.open(url, '_blank');
+                }, 1000);
+            }
+
+            function testPPCProfessional() {
+                log('Testing PPC Professional Package...');
+                
+                const plan = 'Professional Pack';
+                const service = 'PPC Advertising';
+                const price = '1999';
+                const billing = 'monthly';
+                
+                const url = `checkout.html?plan=${encodeURIComponent(plan)}&service=${encodeURIComponent(service)}&price=${price}&billing=${billing}`;
+                log('Generated URL: ' + url);
+                
+                setTimeout(() => {
+                    window.open(url, '_blank');
+                }, 1000);
+            }
+
+            function testCheckoutFlow() {
+                log('Testing checkout calculation...');
+                
+                // Simulate checkout calculations
+                const basePrice = 499;
+                let isYearly = false;
+                
+                function calculatePricing(yearly) {
+                    let finalPrice = basePrice;
+                    let discountAmount = 0;
+                    
+                    if (yearly) {
+                        discountAmount = Math.round(basePrice * 0.4);
+                        finalPrice = basePrice - discountAmount;
+                    }
+                    
+                    const tax = Math.round(finalPrice * 0.18);
+                    const total = finalPrice + tax;
+                    
+                    return { basePrice, finalPrice, discountAmount, tax, total };
+                }
+                
+                const monthlyCalc = calculatePricing(false);
+                const yearlyCalc = calculatePricing(true);
+                
+                log('Monthly Pricing:');
+                log('- Subtotal: $' + monthlyCalc.basePrice);
+                log('- Tax: $' + monthlyCalc.tax);
+                log('- Total: $' + monthlyCalc.total);
+                
+                log('Yearly Pricing:');
+                log('- Subtotal: $' + yearlyCalc.basePrice);
+                log('- Discount: $' + yearlyCalc.discountAmount);
+                log('- After Discount: $' + yearlyCalc.finalPrice);
+                log('- Tax: $' + yearlyCalc.tax);
+                log('- Total: $' + yearlyCalc.total);
+            }
+
+            // Auto-run basic tests
+            window.onload = function() {
+                log('Pricing test page loaded successfully!');
+                log('Click buttons above to test specific functionality.');
+            };
+        </script>
+    </div>
+</body>
+</html>

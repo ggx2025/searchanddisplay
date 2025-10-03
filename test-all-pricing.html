@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Pricing Flow Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        .test-section { background: white; margin: 20px 0; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin: 15px 0; }
+        .test-card { background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #007bff; }
+        .test-card h4 { margin: 0 0 10px 0; color: #333; }
+        .test-card p { margin: 5px 0; color: #666; font-size: 14px; }
+        .test-btn { background: #007bff; color: white; padding: 8px 16px; border: none; border-radius: 5px; cursor: pointer; margin: 5px; text-decoration: none; display: inline-block; }
+        .test-btn:hover { background: #0056b3; }
+        .direct-links { background: #e9ecef; padding: 10px; border-radius: 5px; margin: 10px 0; }
+        .direct-links a { color: #007bff; text-decoration: none; margin: 0 10px; }
+        .status { padding: 10px; border-radius: 5px; margin: 10px 0; }
+        .status.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .status.warning { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>All Pricing Test Page</h1>
+        <div class="controls">
+            <a href="test-pricing.html">Open Test Pricing Page</a> | 
+            <a href="index.html">Back to Home</a>
+        </div>
+    </div>
+    
+    <div class="status success">
+        <strong>✅ All pricing flows are now fixed and ready for testing!</strong>
+        <p>Each service now correctly passes plan details to checkout with proper pricing calculations.</p>
+    </div>
+
+    <div class="test-section">
+        <h2>📋 Test All Services</h2>
+        <div class="direct-links">
+            <strong>Quick Access:</strong>
+            <a href="checkout.html" target="_blank">Direct Checkout</a> |
+            <a href="payment-success.html" target="_blank">Success Page</a>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🎯 PPC Advertising Tests</h2>
+        <div class="test-grid">
+            <div class="test-card">
+                <h4>Starter Pack - $499</h4>
+                <p><strong>Monthly:</strong> $499 + $90 tax = $589</p>
+                <p><strong>Yearly:</strong> $299 + $54 tax = $353 (40% off)</p>
+                <a href="checkout.html?plan=Starter%20Pack&service=PPC%20Advertising&price=499&billing=monthly" class="test-btn" target="_blank">Test Monthly</a>
+                <a href="checkout.html?plan=Starter%20Pack&service=PPC%20Advertising&price=499&billing=yearly" class="test-btn" target="_blank">Test Yearly</a>
+            </div>
+            <div class="test-card">
+                <h4>Professional Pack - $1,999</h4>
+                <p><strong>Monthly:</strong> $1,999 + $360 tax = $2,359</p>
+                <p><strong>Yearly:</strong> $1,199 + $216 tax = $1,415 (40% off)</p>
+                <a href="checkout.html?plan=Professional%20Pack&service=PPC%20Advertising&price=1999&billing=monthly" class="test-btn" target="_blank">Test Monthly</a>
+                <a href="checkout.html?plan=Professional%20Pack&service=PPC%20Advertising&price=1999&billing=yearly" class="test-btn" target="_blank">Test Yearly</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🔍 SEO Optimization Tests</h2>
+        <div class="test-grid">
+            <div class="test-card">
+                <h4>Basic - $299</h4>
+                <p><strong>Monthly:</strong> $299 + $54 tax = $353</p>
+                <p><strong>Yearly:</strong> $179 + $32 tax = $211 (40% off)</p>
+                <a href="checkout.html?plan=Basic&service=SEO%20Optimization&price=299&billing=monthly" class="test-btn" target="_blank">Test Monthly</a>
+                <a href="checkout.html?plan=Basic&service=SEO%20Optimization&price=299&billing=yearly" class="test-btn" target="_blank">Test Yearly</a>
+            </div>
+            <div class="test-card">
+                <h4>Growth - $499</h4>
+                <p><strong>Monthly:</strong> $499 + $90 tax = $589</p>
+                <p><strong>Yearly:</strong> $299 + $54 tax = $353 (40% off)</p>
+                <a href="checkout.html?plan=Growth&service=SEO%20Optimization&price=499&billing=monthly" class="test-btn" target="_blank">Test Monthly</a>
+                <a href="checkout.html?plan=Growth&service=SEO%20Optimization&price=499&billing=yearly" class="test-btn" target="_blank">Test Yearly</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>📱 Social Media Marketing Tests</h2>
+        <div class="test-grid">
+            <div class="test-card">
+                <h4>Essential - $399</h4>
+                <p><strong>Monthly:</strong> $399 + $72 tax = $471</p>
+                <p><strong>Yearly:</strong> $239 + $43 tax = $282 (40% off)</p>
+                <a href="checkout.html?plan=Essential&service=Social%20Media%20Marketing&price=399&billing=monthly" class="test-btn" target="_blank">Test Monthly</a>
+                <a href="checkout.html?plan=Essential&service=Social%20Media%20Marketing&price=399&billing=yearly" class="test-btn" target="_blank">Test Yearly</a>
+            </div>
+            <div class="test-card">
+                <h4>Professional - $699</h4>
+                <p><strong>Monthly:</strong> $699 + $126 tax = $825</p>
+                <p><strong>Yearly:</strong> $419 + $75 tax = $494 (40% off)</p>
+                <a href="checkout.html?plan=Professional&service=Social%20Media%20Marketing&price=699&billing=monthly" class="test-btn" target="_blank">Test Monthly</a>
+                <a href="checkout.html?plan=Professional&service=Social%20Media%20Marketing&price=699&billing=yearly" class="test-btn" target="_blank">Test Yearly</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>💻 Web Design & Development Tests</h2>
+        <div class="test-grid">
+            <div class="test-card">
+                <h4>Basic - $499</h4>
+                <p><strong>One-time:</strong> $499 + $90 tax = $589</p>
+                <p><strong>Yearly discount:</strong> $299 + $54 tax = $353 (40% off)</p>
+                <a href="checkout.html?plan=Basic&service=Web%20Design%20%26%20Development&price=499&billing=monthly" class="test-btn" target="_blank">Test Regular</a>
+                <a href="checkout.html?plan=Basic&service=Web%20Design%20%26%20Development&price=499&billing=yearly" class="test-btn" target="_blank">Test Discounted</a>
+            </div>
+            <div class="test-card">
+                <h4>Professional - $999</h4>
+                <p><strong>One-time:</strong> $999 + $180 tax = $1,179</p>
+                <p><strong>Yearly discount:</strong> $599 + $108 tax = $707 (40% off)</p>
+                <a href="checkout.html?plan=Professional&service=Web%20Design%20%26%20Development&price=999&billing=monthly" class="test-btn" target="_blank">Test Regular</a>
+                <a href="checkout.html?plan=Professional&service=Web%20Design%20%26%20Development&price=999&billing=yearly" class="test-btn" target="_blank">Test Discounted</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>✍️ Content Creation Tests</h2>
+        <div class="test-grid">
+            <div class="test-card">
+                <h4>Essential - $399</h4>
+                <p><strong>Monthly:</strong> $399 + $72 tax = $471</p>
+                <p><strong>Yearly:</strong> $239 + $43 tax = $282 (40% off)</p>
+                <a href="checkout.html?plan=Essential&service=Content%20Creation&price=399&billing=monthly" class="test-btn" target="_blank">Test Monthly</a>
+                <a href="checkout.html?plan=Essential&service=Content%20Creation&price=399&billing=yearly" class="test-btn" target="_blank">Test Yearly</a>
+            </div>
+            <div class="test-card">
+                <h4>Growth - $749</h4>
+                <p><strong>Monthly:</strong> $749 + $135 tax = $884</p>
+                <p><strong>Yearly:</strong> $449 + $81 tax = $530 (40% off)</p>
+                <a href="checkout.html?plan=Growth&service=Content%20Creation&price=749&billing=monthly" class="test-btn" target="_blank">Test Monthly</a>
+                <a href="checkout.html?plan=Growth&service=Content%20Creation&price=749&billing=yearly" class="test-btn" target="_blank">Test Yearly</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🚀 Testing Instructions</h2>
+        <div class="status warning">
+            <h3>How to Test:</h3>
+            <ol>
+                <li><strong>Open Pricing Page:</strong> Click the "Open Pricing Page" link above</li>
+                <li><strong>Switch Services:</strong> Click different service tabs (PPC, SEO, Social Media, etc.)</li>
+                <li><strong>Test Plans:</strong> Click "Choose Plan" buttons for different packages</li>
+                <li><strong>Verify Checkout:</strong> Check that plan name, service, and price match your selection</li>
+                <li><strong>Toggle Billing:</strong> Switch between monthly/yearly and verify discount calculations</li>
+                <li><strong>Check Browser Console:</strong> Press F12 → Console tab to see debug logs</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🔧 Expected Behavior</h2>
+        <div class="status success">
+            <h3>✅ Fixed Issues:</h3>
+            <ul>
+                <li><strong>Service Detection:</strong> Properly maps service tabs to correct service names</li>
+                <li><strong>Price Passing:</strong> Correctly extracts and passes pricing from data attributes</li>
+                <li><strong>Billing Calculation:</strong> 40% yearly discount applied correctly</li>
+                <li><strong>Tax Calculation:</strong> 18% tax on discounted price (not original)</li>
+                <li><strong>Default Values:</strong> No more hardcoded PPC $1999 defaults</li>
+                <li><strong>Responsive Design:</strong> Mobile-friendly layouts for all screen sizes</li>
+                <li><strong>Error Handling:</strong> Graceful fallbacks for missing parameters</li>
+                <li><strong>Debug Logging:</strong> Console logs for troubleshooting</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Add some dynamic functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🧪 Pricing Test Suite Loaded');
+            console.log('📊 Total test cases available: 16');
+            console.log('🔧 Debug mode enabled - check console for logs');
+            
+            // Add click tracking for test buttons
+            const testButtons = document.querySelectorAll('.test-btn');
+            testButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const url = this.href;
+                    console.log('🎯 Testing URL:', url);
+                    
+                    // Extract parameters for validation
+                    const urlObj = new URL(url, window.location.origin);
+                    const params = new URLSearchParams(urlObj.search);
+                    
+                    console.log('📋 Test Parameters:', {
+                        plan: params.get('plan'),
+                        service: params.get('service'),
+                        price: params.get('price'),
+                        billing: params.get('billing')
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

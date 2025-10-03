@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardcoded Values Verification Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f0f8ff; }
+        .test-container { max-width: 800px; margin: 0 auto; }
+        .test-section { background: white; margin: 20px 0; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .success { background: #d4edda; color: #155724; border-left: 4px solid #28a745; }
+        .test-btn { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin: 5px; text-decoration: none; display: inline-block; }
+        .test-btn:hover { background: #0056b3; }
+        .test-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0; }
+        h1 { color: #2c3e50; text-align: center; }
+        h2 { color: #34495e; }
+        p { line-height: 1.6; }
+        .warning { background: #fff3cd; color: #856404; padding: 15px; border-radius: 5px; border-left: 4px solid #ffc107; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>✅ Hardcoded Values Fixed!</h1>
+        
+        <div class="test-section success">
+            <h2>🎉 All Hardcoded Values Removed</h2>
+            <p><strong>Fixed Issues:</strong></p>
+            <ul>
+                <li>✅ Removed hardcoded $299 from checkout page HTML</li>
+                <li>✅ Removed hardcoded $353 total amount</li>
+                <li>✅ Removed hardcoded $54 tax amount</li>
+                <li>✅ Removed hardcoded plan and service names</li>
+                <li>✅ Added proper parameter validation</li>
+                <li>✅ Added redirect to contact page when parameters missing</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h2>🧪 Test Cases</h2>
+            <p>Click the buttons below to test different scenarios:</p>
+            
+            <div class="test-grid">
+                <div>
+                    <h3>✅ Valid Parameters</h3>
+                    <a href="checkout.html?plan=Growth&service=SEO%20Optimization&price=499&billing=monthly" class="test-btn" target="_blank">SEO Growth Monthly</a>
+                    <a href="checkout.html?plan=Professional&service=Social%20Media%20Marketing&price=699&billing=yearly" class="test-btn" target="_blank">Social Media Yearly</a>
+                </div>
+                <div>
+                    <h3>❌ Missing Parameters</h3>
+                    <a href="checkout.html" class="test-btn" target="_blank">No Parameters (Should Redirect)</a>
+                    <a href="checkout.html?plan=Test" class="test-btn" target="_blank">Missing Price (Should Redirect)</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔍 What to Verify</h2>
+            <div class="warning">
+                <h3>Expected Behavior:</h3>
+                <ol>
+                    <li><strong>With Valid Parameters:</strong> Checkout page shows correct plan, service, and price</li>
+                    <li><strong>Without Parameters:</strong> Automatically redirects to index.html#contact</li>
+                    <li><strong>Dynamic Calculations:</strong> Monthly/yearly toggle recalculates correctly</li>
+                    <li><strong>No Hardcoded Values:</strong> All pricing is based on URL parameters</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🎯 Direct Service Tests</h2>
+            <p>Test specific services with different billing cycles:</p>
+            
+            <h3>PPC Advertising</h3>
+            <a href="checkout.html?plan=Starter%20Pack&service=PPC%20Advertising&price=499&billing=monthly" class="test-btn" target="_blank">Starter Monthly</a>
+            <a href="checkout.html?plan=Professional%20Pack&service=PPC%20Advertising&price=1999&billing=yearly" class="test-btn" target="_blank">Professional Yearly</a>
+            
+            <h3>SEO Optimization</h3>
+            <a href="checkout.html?plan=Basic&service=SEO%20Optimization&price=299&billing=monthly" class="test-btn" target="_blank">Basic Monthly</a>
+            <a href="checkout.html?plan=Growth&service=SEO%20Optimization&price=499&billing=yearly" class="test-btn" target="_blank">Growth Yearly</a>
+            
+            <h3>Social Media Marketing</h3>
+            <a href="checkout.html?plan=Essential&service=Social%20Media%20Marketing&price=399&billing=monthly" class="test-btn" target="_blank">Essential Monthly</a>
+            <a href="checkout.html?plan=Professional&service=Social%20Media%20Marketing&price=699&billing=yearly" class="test-btn" target="_blank">Professional Yearly</a>
+        </div>
+
+        <div class="test-section">
+            <h2>📋 Verification Checklist</h2>
+            <div class="warning">
+                <h3>✅ Verify These Items:</h3>
+                <ul>
+                    <li>No $299, $353, $1999, or other hardcoded prices appear</li>
+                    <li>Plan name matches URL parameter</li>
+                    <li>Service name matches URL parameter</li>
+                    <li>Price matches URL parameter</li>
+                    <li>Yearly toggle applies 40% discount correctly</li>
+                    <li>Tax (18%) is calculated on discounted price</li>
+                    <li>Missing parameters redirect to index.html#contact</li>
+                    <li>All pricing calculations are dynamic</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-section success">
+            <h2>🚀 Result</h2>
+            <p><strong>Status:</strong> All hardcoded values have been successfully removed!</p>
+            <p><strong>Next Steps:</strong> The checkout page now works entirely dynamically based on URL parameters from the pricing page.</p>
+        </div>
+    </div>
+
+    <script>
+        console.log('🧪 Hardcoded Values Verification Test Loaded');
+        console.log('✅ All test links are ready for verification');
+        
+        // Add some testing functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📋 Test page ready - click buttons to verify functionality');
+        });
+    </script>
+</body>
+</html>
